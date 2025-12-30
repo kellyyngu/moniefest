@@ -28,7 +28,7 @@ const Testimonials = () => {
   return (
     <section className="py-20 bg-background">
       <div className="section-container">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground text-center mb-8">
+        <h2 className="text-3xl md:text-4xl font-bold text-primary text-center mb-8">
           What Attendees Say
         </h2>
 

@@ -58,7 +58,7 @@ const Exhibitors = () => {
     <section className="py-20 bg-background" id="exhibitors" aria-labelledby="exhibitors-title">
       <div className="section-container flex flex-col items-center">
         <div className="mb-12">
-          <h2 id="exhibitors-title" className="text-3xl font-bold text-foreground text-center mb-6">Supporting Partners & Sponsors</h2>
+          <h2 id="exhibitors-title" className="text-3xl font-bold text-primary text-center mb-6">Supporting Partners & Sponsors</h2>
           <p className="text-center text-muted-foreground">Below are placeholder logos for the different sponsor categories.</p>
         </div>
 

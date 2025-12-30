@@ -165,7 +165,7 @@ const Programme = () => {
               onClick={() => setDay(1)}
               aria-pressed={day === 1}
               className={`px-4 py-2 rounded-full font-semibold transition-all ${
-                day === 1 ? "bg-primary text-primary-foreground" : "bg-transparent text-muted-foreground hover:text-primary"
+                day === 1 ? "cta-pill text-primary-foreground" : "bg-transparent text-muted-foreground hover:text-primary border border-primary/10"
               }`}
             >
               Day 1
@@ -174,7 +174,7 @@ const Programme = () => {
               onClick={() => setDay(2)}
               aria-pressed={day === 2}
               className={`px-4 py-2 rounded-full font-semibold transition-all ${
-                day === 2 ? "bg-primary text-primary-foreground" : "bg-transparent text-muted-foreground hover:text-primary"
+                day === 2 ? "cta-pill text-primary-foreground" : "bg-transparent text-muted-foreground hover:text-primary border border-primary/10"
               }`}
             >
               Day 2
@@ -187,8 +187,8 @@ const Programme = () => {
               onClick={() => setActiveTab("main")}
               className={`px-6 py-2 rounded-full font-semibold transition-all ${
                 activeTab === "main"
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-transparent text-muted-foreground hover:text-primary"
+                  ? "cta-pill text-primary-foreground"
+                  : "bg-transparent text-muted-foreground hover:text-primary border border-primary/10"
               }`}
             >
               Capital Stage
@@ -197,8 +197,8 @@ const Programme = () => {
               onClick={() => setActiveTab("engagement")}
               className={`px-6 py-2 rounded-full font-semibold transition-all ${
                 activeTab === "engagement"
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-transparent text-muted-foreground hover:text-primary"
+                  ? "cta-pill text-primary-foreground"
+                  : "bg-transparent text-muted-foreground hover:text-primary border border-primary/10"
               }`}
             >
               Creator Stage

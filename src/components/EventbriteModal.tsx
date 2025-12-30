@@ -27,7 +27,7 @@ const loadScript = () => {
   });
 };
 
-const EventbriteModal = ({ open, onClose, eventId, height = 700 }: Props) => {
+const EventbriteModal = ({ open, onClose, eventId, height = 560, popupRef }: Props) => {
   const containerId = `eventbrite-widget-container-${eventId}`;
   const createdRef = useRef(false);
   const [widgetReady, setWidgetReady] = useState(false);
@@ -162,36 +162,36 @@ const EventbriteModal = ({ open, onClose, eventId, height = 700 }: Props) => {
         }
       }
     }
-  }, [widgetReady, widgetFailed, eventId, /* popupRef is read via any above */]);
+  }, [widgetReady, widgetFailed, eventId, popupRef]);
 
   if (!open) return null;
 
   const modal = (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center">
-      <div className="absolute inset-0 bg-black/50" onClick={onClose} />
-      <div className="relative z-[10000] w-[min(1100px,96%)] max-w-[1100px] bg-white rounded-md shadow-lg overflow-hidden">
-        <div className="flex items-center justify-between px-4 py-2 border-b bg-white">
-          <h3 className="font-semibold text-gray-900">Register</h3>
-          <button onClick={onClose} className="text-gray-700 bg-transparent px-2 py-1 rounded-md hover:text-gray-900">Close</button>
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center px-4">
+      <div className="absolute inset-0 bg-black/60" onClick={onClose} />
+      <div className="relative z-[10000] w-[min(900px,96%)] max-w-[900px] bg-white rounded-lg shadow-2xl overflow-hidden">
+        <div className="flex items-center justify-between px-4 py-3 bg-slate-900 text-white">
+          <h3 className="font-semibold">Register</h3>
+          <button onClick={onClose} className="text-slate-100 bg-transparent px-3 py-1 rounded-md hover:bg-slate-800">Close</button>
         </div>
         <div className="p-4 bg-white text-gray-900">
           <div>
             {!widgetReady && !widgetFailed && (
-              <div className="flex items-center justify-center py-8">
-                <div className="w-8 h-8 border-4 border-gray-200 border-t-primary rounded-full animate-spin" />
+              <div className="flex items-center justify-center py-6">
+                <div className="w-8 h-8 border-4 border-gray-200 border-t-green-500 rounded-full animate-spin" />
               </div>
             )}
 
-            <div id={containerId} style={{ minHeight: `${height}px` }} />
+            <div id={containerId} style={{ minHeight: Math.min(height, window.innerHeight * 0.75), maxHeight: '75vh', overflow: 'auto' }} />
 
             {widgetFailed && (
               <div className="mt-4">
-                <div className="mb-3 flex items-center gap-3">
+                <div className="mb-3 flex flex-col sm:flex-row items-start sm:items-center gap-3">
                   <p className="text-sm text-gray-700 mb-0">Eventbrite widget failed to load. Open the event page to register.</p>
                   <a href={`https://www.eventbrite.com/e/${eventId}`} target="_blank" rel="noopener noreferrer" className="inline-block bg-primary text-white px-4 py-2 rounded-md">Open Event Page</a>
                 </div>
                 <div className="mt-3">
-                  <iframe title="Eventbrite" src={`https://www.eventbrite.com/e/${eventId}`} style={{ width: "100%", height: `${height}px`, border: 0 }} />
+                  <iframe title="Eventbrite" src={`https://www.eventbrite.com/e/${eventId}`} style={{ width: "100%", height: Math.min(height, window.innerHeight * 0.7), border: 0 }} />
                 </div>
               </div>
             )}

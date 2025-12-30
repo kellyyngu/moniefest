@@ -18,17 +18,9 @@ const Icon = ({ name }: { name: string }) => {
 
 const About = () => {
   return (
-    <section className="py-20 bg-background" id="programme">
+    <section className="py-10 bg-background" id="programme">
       <div className="container mx-auto px-4">
-        {/* Main Description */}
-        <div className="max-w-4xl mx-auto text-center mb-16">
-          <h2 className="text-2xl md:text-3xl font-semibold text-primary mb-6">
-            MONIE Fest — A Large-Scale Financial Lifestyle Festival
-          </h2>
-          <p className="text-muted-foreground text-lg leading-relaxed">
-            MONIE Fest is a large-scale financial lifestyle festival focused on money, investing, banking, and everyday financial decisions. Co-created by Foodie Media and Spire Digital, the event brings leading financial institutions and lifestyle brands together to engage 25,000–30,000 retail attendees in one location.
-          </p>
-        </div>
+        {/* Main Description removed per user request */}
 
         {/* MONIE Fest positioning block — redesigned (full-width, decorative, not a card) */}
         <div className="max-w-5xl mx-auto text-center mb-12 relative px-4">
@@ -42,7 +34,7 @@ const About = () => {
 
             <div className="flex flex-col sm:flex-row items-stretch gap-6 justify-center">
               <div className="flex-1 text-center">
-                <div className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-gradient-to-r from-[#46d36b] to-[#1fbf3a] shadow-[0_10px_30px_rgba(34,197,94,0.12)] text-black font-extrabold tracking-wide transform transition hover:scale-105 animate-float" style={{ animationDuration: '6s' }}>
+                <div className="inline-flex items-center justify-center px-6 py-3 rounded-full shadow-[0_10px_30px_rgba(34,197,94,0.12)] font-extrabold tracking-wide transform transition hover:scale-105 animate-float" style={{ animationDuration: '6s', background: 'linear-gradient(90deg, hsl(var(--cta-start)) 0%, hsl(var(--cta-end)) 100%)', color: 'hsl(var(--primary-foreground))' }}>
                   INVESTMENT EDUCATION
                 </div>
                 <p className="mt-3 text-sm text-muted-foreground max-w-xs mx-auto">Practical workshops, expert panels and hands-on demos to build real skills.</p>
@@ -56,7 +48,7 @@ const About = () => {
               </div>
 
               <div className="flex-1 text-center">
-                <div className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-gradient-to-r from-[#7ef3a7] to-[#4ade80] shadow-[0_10px_30px_rgba(72,187,120,0.09)] text-black font-extrabold tracking-wide transform transition hover:scale-105 animate-float" style={{ animationDuration: '5.2s' }}>
+                <div className="inline-flex items-center justify-center px-6 py-3 rounded-full shadow-[0_10px_30px_rgba(72,187,120,0.09)] font-extrabold tracking-wide transform transition hover:scale-105 animate-float" style={{ animationDuration: '5.2s', background: 'linear-gradient(90deg, hsl(var(--cta-start)) 0%, hsl(var(--cta-end)) 100%)', color: 'hsl(var(--primary-foreground))' }}>
                   FINANCIAL CONTENT
                 </div>
                 <p className="mt-3 text-sm text-muted-foreground max-w-xs mx-auto">High-quality talks, case studies and content that connect finance to everyday life.</p>
@@ -70,7 +62,7 @@ const About = () => {
               </div>
 
               <div className="flex-1 text-center">
-                <div className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-gradient-to-r from-[#a7f3d0] to-[#34d399] shadow-[0_10px_30px_rgba(16,185,129,0.08)] text-black font-extrabold tracking-wide transform transition hover:scale-105 animate-float" style={{ animationDuration: '6.6s' }}>
+                <div className="inline-flex items-center justify-center px-6 py-3 rounded-full shadow-[0_10px_30px_rgba(16,185,129,0.08)] font-extrabold tracking-wide transform transition hover:scale-105 animate-float" style={{ animationDuration: '6.6s', background: 'linear-gradient(90deg, hsl(var(--cta-start)) 0%, hsl(var(--cta-end)) 100%)', color: 'hsl(var(--primary-foreground))' }}>
                   LIFESTYLE EXPERIENCES
                 </div>
                 <p className="mt-3 text-sm text-muted-foreground max-w-xs mx-auto">Immersive brand activations, live demos and curated experiences for all ages.</p>
@@ -91,37 +83,53 @@ const About = () => {
         {/* Two professional info cards */}
         <div className="grid md:grid-cols-2 gap-8 items-start">
           <article tabIndex={0} role="button" aria-label="ENGAGE, LEARN, AND CONNECT!" className="group relative rounded-xl overflow-hidden shadow-md hover:shadow-lg transition bg-card border border-border focus:outline-none">
-            <div className="absolute inset-0 bg-cover bg-center opacity-30" style={{ backgroundImage: `url(${heroBg})` }} />
+            <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.62), rgba(0,0,0,0.62)), url(${heroBg})` }} />
             <div className="relative p-6 md:p-8">
               <div className="flex items-center gap-4">
                 <div className="bg-primary/10 p-3 rounded-lg text-primary-foreground">
                   <Icon name="engage" />
                 </div>
-                <h3 className="text-lg md:text-xl font-bold text-navy-deep">WHAT IS MONIE FEST?</h3>
+                <h3 className="text-lg md:text-xl font-bold text-white">WHAT IS MONIE FEST?</h3>
               </div>
 
-              <div className="mt-4 text-sm md:text-base text-muted-foreground leading-relaxed transition-all duration-300 ease-in-out max-h-0 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:max-h-96 group-hover:pointer-events-auto group-focus:opacity-100 group-focus:max-h-96 group-focus:pointer-events-auto">
-                <p className="mb-3">MONIE Fest is a festival blending finance and lifestyle — covering money, investing, banking, and everyday financial choices.</p>
-                <p className="mb-3">Co-created by Foodie Media and Spire Digital, MONIE Fest brings together industry leaders and lifestyle brands for a dynamic, consumer-focused experience.</p>
-                <p className="mt-2 text-sm text-muted-foreground">Perfect for anyone looking to learn, compare, and take action on their personal finances.</p>
+              <div className="mt-4 text-sm md:text-base text-white/90 leading-relaxed transition-all duration-300 ease-in-out max-h-0 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:max-h-96 group-hover:pointer-events-auto group-focus:opacity-100 group-focus:max-h-96 group-focus:pointer-events-auto">
+                <p className="mb-0">MONIE Fest is a large-scale financial lifestyle festival focused on money, investing, banking, and everyday financial decisions. Co-created by Foodie Media and Spire Digital, the event brings leading financial institutions and lifestyle brands together to engage 25,000–30,000 retail attendees in one location.</p>
               </div>
             </div>
           </article>
 
-          <article tabIndex={0} role="button" aria-label="EXCLUSIVE INVESTOR RELATIONS ACCESS!" className="group relative rounded-xl overflow-hidden shadow-md hover:shadow-lg transition bg-card border border-border focus:outline-none">
-            <div className="absolute inset-0 bg-cover bg-center opacity-30" style={{ backgroundImage: `url(${heroBg})` }} />
+          <article tabIndex={0} role="button" aria-label="TARGET AUDIENCE" className="group relative rounded-xl overflow-hidden shadow-md hover:shadow-lg transition bg-card border border-border focus:outline-none">
+            <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.62), rgba(0,0,0,0.62)), url(${heroBg})` }} />
             <div className="relative p-6 md:p-8">
               <div className="flex items-center gap-4">
                 <div className="bg-primary/10 p-3 rounded-lg text-primary-foreground">
                   <Icon name="conference" />
                 </div>
-                <h3 className="text-lg md:text-xl font-bold text-navy-deep">AUDIENCE & PARTNERS</h3>
+                <h3 className="text-lg md:text-xl font-bold text-white">TARGET AUDIENCE</h3>
               </div>
 
-              <div className="mt-4 text-sm md:text-base text-muted-foreground leading-relaxed transition-all duration-300 ease-in-out max-h-0 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:max-h-96 group-hover:pointer-events-auto group-focus:opacity-100 group-focus:max-h-96 group-focus:pointer-events-auto">
-                <p className="mb-3">MONIE Fest connects leading financial institutions and lifestyle brands in a single destination.</p>
-                <p className="mb-3">The festival is designed to engage a broad consumer audience, with expected attendance of 25,000–30,000 retail visitors.</p>
-                <p className="mt-2 text-sm text-muted-foreground">Ideal for brands, partners and attendees seeking high-impact consumer engagement.</p>
+              <div className="mt-4 text-sm md:text-base text-white/90 leading-relaxed transition-all duration-300 ease-in-out max-h-0 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:max-h-96 group-hover:pointer-events-auto group-focus:opacity-100 group-focus:max-h-96 group-focus:pointer-events-auto">
+                <div className="grid gap-3">
+                  <div className="flex items-center justify-between py-3 border-t border-border/20">
+                    <div className="font-bold text-sm uppercase text-white/90">Topics</div>
+                    <div className="text-right text-sm text-muted-foreground">Investment, personal finance, banking, savings & lifestyle</div>
+                  </div>
+
+                  <div className="flex items-center justify-between py-3 border-t border-border/20">
+                    <div className="font-bold text-sm uppercase text-white/90">Demographic</div>
+                    <div className="text-right text-sm text-muted-foreground">Working personnel, seasoned investors, HNWI, young Malaysian investors</div>
+                  </div>
+
+                  <div className="flex items-center justify-between py-3 border-t border-border/20">
+                    <div className="font-bold text-sm uppercase text-white/90">Visitations</div>
+                    <div className="text-right text-sm text-muted-foreground">25,000 – 30,000</div>
+                  </div>
+
+                  <div className="flex items-center justify-between py-3 border-t border-border/20">
+                    <div className="font-bold text-sm uppercase text-white/90">Age Group</div>
+                    <div className="text-right text-sm text-muted-foreground">21 – 55+ Year Old</div>
+                  </div>
+                </div>
               </div>
             </div>
           </article>

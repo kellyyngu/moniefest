@@ -50,6 +50,9 @@
     --blue-hover: 200 12% 6%;
     --cta-start: 90 95% 60%;
     --cta-end: 90 95% 36%;
+    /* Alternate CTA gradient (used for buttons across hero/footer/register) */
+    --button-start: 110 92% 48%; /* slightly greener, cooler tone */
+    --button-end: 85 95% 36%;  /* deeper lime end */
 
     /* Accessible ring color for focus states (neon green) */
     --ring: 90 90% 48%;
@@ -386,7 +389,7 @@
 
   /* Hero responsive improvements */
   .hero-section {
-    min-height: 45vh;
+    min-height: 55vh;
     padding-top: 3rem;
     padding-bottom: 2.25rem;
   }
@@ -406,13 +409,15 @@
       /* Mobile: keep transparent to match user preference, but add padding for tap targets */
       background: transparent;
       backdrop-filter: none;
-      padding: 1rem;
+      padding: 1.5rem;
       border-radius: 12px;
       box-shadow: none;
       border: none;
     }
     .hero-section .container { padding-left: 0.75rem; padding-right: 0.75rem; }
-    .hero-section h1 { color: hsl(var(--secondary)); }
+    .hero-section .container { text-align: left; }
+    .hero-section h1 { color: hsl(var(--secondary)); font-size: 1.9rem; line-height: 1.05; }
+    .hero-section p { font-size: 1.0625rem; }
   }
 
   /* Slight lift on hover for larger screens */
@@ -462,14 +467,19 @@
     gap: 0.75rem;
     padding: 0.5rem 0.9rem;
     border-radius: 9999px;
-    border: 2px solid hsl(var(--primary) / 0.9);
-    background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+    border: 2px solid hsl(var(--button-start) / 0.92);
+    background: linear-gradient(90deg, hsl(var(--button-start)) 0%, hsl(var(--button-end)) 100%);
     text-decoration: none;
     transition: transform 0.14s ease, box-shadow 0.14s ease;
+    position: relative;
   }
-  .cta-pill:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(11,15,30,0.12); }
+  .cta-pill:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(11,15,30,0.12); filter: brightness(0.96); }
   .cta-pill-label { padding-left: 0.5rem; padding-right: 0.25rem; }
   .cta-pill-icon { width: 44px; height: 44px; }
+
+  /* Center the CTA label while keeping the icon visually on the right */
+  .cta-pill .cta-pill-label { margin-left: auto; margin-right: auto; }
+  .cta-pill .cta-pill-icon { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); }
 
   /* Brand utilities */
   .brand-green {
@@ -504,7 +514,7 @@
   }
 
   .register-btn-top {
-    background: linear-gradient(180deg, hsl(var(--primary)) 0%, hsl(var(--primary) / 0.92) 100%);
+    background: linear-gradient(90deg, hsl(var(--button-start)) 0%, hsl(var(--button-end)) 100%);
     color: hsl(var(--primary-foreground));
     border-radius: 0.5rem;
     padding: 0.55rem 0.9rem;
@@ -604,14 +614,14 @@
     gap: 0.75rem;
     padding: 0.6rem 1rem;
     border-radius: 12px;
-    background: linear-gradient(180deg, hsl(var(--cta-start)) 0%, hsl(var(--cta-end)) 100%);
+    background: linear-gradient(90deg, hsl(var(--button-start)) 0%, hsl(var(--button-end)) 100%);
     color: hsl(var(--primary-foreground));
     font-weight: 600;
     box-shadow: 0 10px 28px rgba(16,185,129,0.12);
     text-decoration: none;
     transition: transform 120ms ease, box-shadow 120ms ease;
   }
-  .ticket-btn:hover { transform: translateY(-3px); box-shadow: 0 18px 36px rgba(16,185,129,0.14); }
+  .ticket-btn:hover { transform: translateY(-3px); box-shadow: 0 18px 36px rgba(16,185,129,0.14); filter: brightness(0.98); }
 
   .ticket-icon {
     display: inline-grid; place-items: center; width: 30px; height: 30px; background: rgba(255,255,255,0.12); border-radius: 8px; color: hsl(var(--primary-foreground));
@@ -729,7 +739,7 @@
   }
 
   .cta-pill-icon.brand-bg {
-    background: hsl(var(--primary));
+    background: linear-gradient(90deg, hsl(var(--button-start)) 0%, hsl(var(--button-end)) 100%);
   }
 
   /* Darker overlay on hero to make white text pop */
@@ -746,8 +756,8 @@
   }
 
   .hero-section .logo-fill {
-    width: 32vw; /* keep logo proportional but small on tiny screens */
-    max-width: 160px;
+    width: 44vw; /* larger logo on tiny screens */
+    max-width: 260px;
   }
 
   .hero-section h2 {
@@ -798,6 +808,23 @@
     justify-content: center;
     padding-left: 0.75rem;
     padding-right: 0.75rem;
+  }
+
+  /* Force hero details left-aligned and slightly larger on phones */
+  .hero-section .hero-detail {
+    text-align: left;
+    font-size: 1rem; /* ensure base size on very small screens */
+  }
+
+  .hero-section .hero-detail .text-lg { font-size: 1.0625rem; }
+
+  /* Override hero-specific CTA: make it left-aligned and slightly narrower */
+  .hero-section .cta-pill {
+    width: 86%;
+    max-width: 320px;
+    justify-content: flex-start;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
 
   /* Reduce footer grid complexity on phones */

@@ -43,7 +43,7 @@ const Icon = ({ name }: { name: string }) => {
 
 const Stats = () => {
   return (
-    <section className="py-16 bg-background">
+    <section className="py-8 bg-background">
       <div className="section-container">
          <div className="flex justify-center">
            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl">
@@ -60,7 +60,7 @@ const Stats = () => {
                 </div>
               </div>
 
-              <p className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-navy-deep mb-1">{stat.number}</p>
+              <p className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-primary mb-1">{stat.number}</p>
               <p id={`stat-${index}-label`} className="text-muted-foreground text-sm md:text-base">{stat.label}</p>
             </article>
           ))}

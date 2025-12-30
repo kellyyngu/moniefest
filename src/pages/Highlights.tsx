@@ -18,8 +18,8 @@ const BannerUploader: React.FC = () => {
 
   return (
     <div>
-      <h2 className="text-xl font-semibold mb-4">Upload event banners (5)</h2>
-      <p className="text-sm text-muted-foreground mb-6">Recommended size: 1920 x 1080 (w x h). Supported formats: JPG, PNG. Each slot accepts one banner.</p>
+      <h2 className="text-xl font-semibold mb-4">Event Banners</h2>
+      <p className="text-sm text-muted-foreground mb-6">Recommended size: 1920 x 1080 (w x h).</p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
         {previews.map((src, idx) => (
@@ -29,7 +29,7 @@ const BannerUploader: React.FC = () => {
                 // eslint-disable-next-line @next/next/no-img-element
                 <img src={src} alt={`Banner ${idx + 1}`} className="w-full h-full object-cover" />
               ) : (
-                <div className="text-center px-3 py-6 text-sm text-muted-foreground">Click to upload<br/>1920 x 1080</div>
+                <div className="text-center px-3 py-6 text-sm text-muted-foreground">upload<br/>1920 x 1080</div>
               )}
             </div>
             <input
@@ -60,7 +60,7 @@ const HighlightsPage: React.FC = () => {
             Highlights
           </h1>
           <p className="mt-3 text-sm sm:text-base md:text-lg text-primary-foreground/90 text-center max-w-3xl mx-auto px-4">
-            This section features the Lucky Draw and special programmes. Upload up to five banner images for the event.
+            This section features the Lucky Draw and special programmes.
           </p>
         </div>
       </section>
@@ -70,13 +70,13 @@ const HighlightsPage: React.FC = () => {
           <div className="grid gap-8">
             <div className="bg-card rounded-lg p-6 shadow-sm">
               <h3 className="text-lg font-semibold mb-3">Lucky Draw</h3>
-              <p className="text-sm text-muted-foreground mb-4">Entrants to the lucky draw will be selected during the event. Upload banners that will appear in the lucky draw section.</p>
+              <p className="text-sm text-muted-foreground mb-4">Entrants to the lucky draw will be selected during the event.</p>
               <BannerUploader />
             </div>
 
             <div className="bg-card rounded-lg p-6 shadow-sm">
               <h3 className="text-lg font-semibold mb-3">Special Programmes</h3>
-              <p className="text-sm text-muted-foreground">Use this area to describe any side programmes, masterclasses or spotlight sessions that form part of Monie Fest.</p>
+              <p className="text-sm text-muted-foreground">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac orci vitae dolor efficitur luctus. Integer non urna nec sapien suscipit luctus. Sed sit amet arcu vel justo facilisis aliquet.</p>
             </div>
           </div>
         </div>
