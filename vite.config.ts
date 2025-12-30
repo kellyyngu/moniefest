@@ -6,7 +6,8 @@ import { componentTagger } from "lovable-tagger";
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   // allow overriding base path for deployments to sub-paths (e.g. /events/moniefest2026/)
-  base: process.env.VITE_BASE || '/',
+  // default to the GitHub Pages subpath for this repo
+  base: process.env.VITE_BASE || '/moniefest/',
   server: {
     host: "::",
     port: 8080,
