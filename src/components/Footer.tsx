@@ -1,12 +1,17 @@
 import monieLogo from "@/assets/monielogo.png";
+import { Link } from "react-router-dom";
 
 const FOOTER_EVENTBRITE_ID = "1978806719165";
 const FOOTER_EVENT_URL = `https://www.eventbrite.com/e/${FOOTER_EVENTBRITE_ID}`;
 
 const Footer = () => {
   return (
-    <footer className="footer-panel">
+    <footer className="footer-panel bg-[#0b0b0b]" style={{ boxShadow: 'inset 0 20px 40px rgba(0,0,0,0.6)' }}>
       <div className="container mx-auto px-6 py-8">
+        {/* clear divider between page content and footer */}
+        <div className="w-full mb-8">
+          <div className="mx-auto w-full max-w-[1200px] h-[3px] bg-[#212121] rounded-sm" />
+        </div>
         <div className="footer-inner">
           {/* Left: Brand (logo only) */}
           <div className="footer-brand">
@@ -41,11 +46,11 @@ const Footer = () => {
           <div className="footer-links">
             <div className="footer-title">MONIE FEST 2026</div>
             <ul>
-              <li><a className="footer-link" href="#agenda">Agenda</a></li>
-              <li><a className="footer-link" href="#speakers">Speakers</a></li>
-              <li><a className="footer-link" href="#lucky-draw">Lucky Draw Prizes</a></li>
-              <li><a className="footer-link" href="#sponsors">Sponsors</a></li>
-              <li><a className="footer-link" href="#faq">FAQ</a></li>
+              <li><Link className="footer-link" to="/programme">Programme</Link></li>
+              <li><Link className="footer-link" to="/speakers">Speakers</Link></li>
+              <li><Link className="footer-link" to="/highlights">Highlights</Link></li>
+              <li><Link className="footer-link" to={{ pathname: '/', hash: '#exhibitors' }}>Sponsors</Link></li>
+              <li><Link className="footer-link" to="/faq">FAQ</Link></li>
             </ul>
           </div>
 
@@ -92,14 +97,10 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-10 border-t border-white/6 pt-6 text-sm text-white/80">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-3">
-            <div>© {new Date().getFullYear()} Monie Fest — All rights reserved.</div>
-            <div className="flex items-center gap-4">
-              <a className="footer-link" href="#privacy">Privacy</a>
-              <a className="footer-link" href="#terms">Terms</a>
+          <div className="mt-10 border-t-2 border-white/10 pt-6 text-sm text-white/80">
+            <div className="flex flex-col md:flex-row items-center justify-center text-center gap-3">
+              <div>© {new Date().getFullYear()} Monie Fest — All rights reserved.</div>
             </div>
-          </div>
         </div>
         {/* Modal removed: open Eventbrite in a new tab instead of an embedded modal */}
       </div>

@@ -39,11 +39,9 @@ const Header = ({ onOpenEventbrite }: HeaderProps) => {
 
   // When mobile menu opens, move focus to the first link for accessibility
   useEffect(() => {
-    if (isMenuOpen) {
-      setTimeout(() => {
-        firstMobileLinkRef.current?.focus();
-      }, 50);
-    }
+    // Removed auto-focus on the first mobile link because it caused the link
+    // to show focused/active styles (green + underline) on open. Leaving the
+    // ref in place for potential future use.
   }, [isMenuOpen]);
 
   return (
@@ -53,16 +51,12 @@ const Header = ({ onOpenEventbrite }: HeaderProps) => {
         <nav className="flex items-center justify-between" aria-label="Main navigation">
           {/* Logo (masked so we can fill with exact brand color) */}
           <Link to="/" className="flex items-center" aria-label="Monie Fest 2026 home">
-            <div className="bg-white/10 rounded px-3 py-2 mr-3 flex items-center shadow-sm backdrop-blur-sm">
-              <img
-                src={monieLogo}
-                alt="Monie Fest logo"
-                className="h-8 md:h-12 w-auto object-contain"
-                style={{
-                  display: 'block'
-                }}
-              />
-            </div>
+            <img
+              src={monieLogo}
+              alt="Monie Fest logo"
+              className="h-8 md:h-12 w-auto object-contain mr-3"
+              style={{ display: 'block', background: 'transparent' }}
+            />
           </Link>
 
           {/* Desktop Navigation */}

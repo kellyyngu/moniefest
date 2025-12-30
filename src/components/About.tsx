@@ -1,4 +1,5 @@
 import heroBg from "@/assets/malaysia.png";
+import { Link } from "react-router-dom";
 
 const Icon = ({ name }: { name: string }) => {
   if (name === 'engage') {
@@ -29,37 +30,60 @@ const About = () => {
           </p>
         </div>
 
-        {/* MONIE Fest positioning block (theme-matched, clean) */}
-        <div className="max-w-4xl mx-auto text-center mb-12 relative">
-          <div className="relative overflow-visible">
-            {/* decorative blurred gradient */}
-            <div className="pointer-events-none absolute -inset-4 rounded-lg opacity-30 -z-10" style={{background: 'linear-gradient(90deg, rgba(255,122,26,0.06), rgba(56,84,255,0.06))', filter: 'blur(18px)'}} />
+        {/* MONIE Fest positioning block — redesigned (full-width, decorative, not a card) */}
+        <div className="max-w-5xl mx-auto text-center mb-12 relative px-4">
+          {/* Decorative background shapes */}
+          <div className="pointer-events-none absolute inset-x-0 -top-8 -z-10 flex justify-center">
+            <div className="w-[86%] h-28 rounded-xl opacity-10 blur-3xl" style={{ background: 'radial-gradient(closest-side, rgba(72,187,120,0.25), transparent 40%)' }} />
+          </div>
 
-            <div className="glass-card p-6 rounded-lg border border-border shadow-sm relative z-10">
-              <h4 className="font-semibold text-lg text-navy-deep">Designed to go beyond traditional finance events, MONIE Fest combines</h4>
+          <div className="relative z-10 py-8 sm:py-12">
+            <h4 className="text-2xl md:text-3xl font-semibold text-white mb-4">Designed to go beyond traditional finance events, MONIE Fest combines</h4>
 
-              <div className="mt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <span className="inline-flex items-center px-4 py-2 bg-primary/10 text-primary font-semibold rounded-full transform transition duration-400 hover:scale-105 hover:shadow-lg animate-float" style={{animationDuration: '6s'}}>
+            <div className="flex flex-col sm:flex-row items-stretch gap-6 justify-center">
+              <div className="flex-1 text-center">
+                <div className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-gradient-to-r from-[#46d36b] to-[#1fbf3a] shadow-[0_10px_30px_rgba(34,197,94,0.12)] text-black font-extrabold tracking-wide transform transition hover:scale-105 animate-float" style={{ animationDuration: '6s' }}>
                   INVESTMENT EDUCATION
-                </span>
+                </div>
+                <p className="mt-3 text-sm text-muted-foreground max-w-xs mx-auto">Practical workshops, expert panels and hands-on demos to build real skills.</p>
+              </div>
 
-                <span className="text-2xl font-bold text-muted-foreground">+</span>
+              <div className="hidden sm:flex items-center px-2">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="plus-animate text-muted-foreground" aria-hidden style={{display: 'block'}}>
+                  <circle cx="12" cy="12" r="11" fill="rgba(255,255,255,0.02)" />
+                  <path d="M12 7v10M7 12h10" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
 
-                <span className="inline-flex items-center px-4 py-2 bg-primary/10 text-primary font-semibold rounded-full transform transition duration-400 hover:scale-105 hover:shadow-lg animate-float" style={{animationDuration: '5.2s', animationDelay: '200ms'}}>
+              <div className="flex-1 text-center">
+                <div className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-gradient-to-r from-[#7ef3a7] to-[#4ade80] shadow-[0_10px_30px_rgba(72,187,120,0.09)] text-black font-extrabold tracking-wide transform transition hover:scale-105 animate-float" style={{ animationDuration: '5.2s' }}>
                   FINANCIAL CONTENT
-                </span>
+                </div>
+                <p className="mt-3 text-sm text-muted-foreground max-w-xs mx-auto">High-quality talks, case studies and content that connect finance to everyday life.</p>
+              </div>
 
-                <span className="hidden sm:inline text-2xl font-bold text-muted-foreground">+</span>
+              <div className="hidden sm:flex items-center px-2">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="plus-animate text-muted-foreground" aria-hidden style={{display: 'block', animationDuration: '2.2s'}}>
+                  <circle cx="12" cy="12" r="11" fill="rgba(255,255,255,0.02)" />
+                  <path d="M12 7v10M7 12h10" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
 
-                <span className="inline-flex items-center px-4 py-2 bg-primary/10 text-primary font-semibold rounded-full transform transition duration-400 hover:scale-105 hover:shadow-lg animate-float" style={{animationDuration: '6.6s', animationDelay: '400ms'}}>
+              <div className="flex-1 text-center">
+                <div className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-gradient-to-r from-[#a7f3d0] to-[#34d399] shadow-[0_10px_30px_rgba(16,185,129,0.08)] text-black font-extrabold tracking-wide transform transition hover:scale-105 animate-float" style={{ animationDuration: '6.6s' }}>
                   LIFESTYLE EXPERIENCES
-                </span>
+                </div>
+                <p className="mt-3 text-sm text-muted-foreground max-w-xs mx-auto">Immersive brand activations, live demos and curated experiences for all ages.</p>
               </div>
+            </div>
 
-              <div className="mt-6 bg-card p-4 rounded-md border border-border text-left text-muted-foreground">
-                <p className="mb-3">To make money topics more accessible and engaging to young Malaysians and seasoned investors.</p>
-                <p>The festival expands financial participation by reaching audiences outside the existing investor community and creating a more inclusive, lifestyle-driven approach to financial literacy.</p>
-              </div>
+            <div className="mt-6 max-w-3xl mx-auto text-center text-muted-foreground space-y-4">
+              <p className="text-base md:text-lg">To make money topics more accessible and engaging to young Malaysians and seasoned investors.</p>
+              <p className="text-base md:text-lg">The festival expands financial participation by reaching audiences outside the existing investor community and creating a more inclusive, lifestyle-driven approach to financial literacy.</p>
+            </div>
+
+            <div className="mt-10 flex justify-center">
+              <Link to="/programme" className="inline-block px-6 py-3 rounded-md bg-transparent border border-primary text-primary hover:bg-primary/8 transition">See Programme</Link>
             </div>
           </div>
         </div>

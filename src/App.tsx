@@ -9,15 +9,17 @@ import Programme from "./pages/Programme";
 import Speakers from "./pages/Speakers";
 import Highlights from "./pages/Highlights";
 import FAQPage from "./pages/FAQ";
+import ScrollToTop from "@/components/scroll-to-top";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
+      <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/programme" element={<Programme />} />

@@ -130,7 +130,7 @@ const FAQPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
             {/* Left column - heading and intro */}
             <div className="space-y-6">
-              <h2 className="text-3xl md:text-4xl font-extrabold text-navy-deep">Popular Questions</h2>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-primary">Popular Questions</h2>
               <p className="text-lg text-muted-foreground max-w-md">
                 Discover the essential information you need to know about Monie Fest.
               </p>
