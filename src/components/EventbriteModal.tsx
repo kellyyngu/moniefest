@@ -169,16 +169,12 @@ const EventbriteModal = ({ open, onClose, eventId, height = 560, popupRef }: Pro
   const modal = (
     <div className="fixed inset-0 z-[9999] flex items-center justify-center px-4">
       <div className="absolute inset-0 bg-black/60" onClick={onClose} />
-      {/*
-        Responsive modal: full width on small screens, centered and constrained on larger.
-        Use a max-height and internal scrolling so the embedded Eventbrite iframe fits on mobile.
-      */}
-      <div className="relative z-[10000] w-full sm:w-[min(900px,96%)] max-w-[900px] bg-white sm:rounded-lg rounded-none shadow-2xl overflow-hidden">
-        <div className="flex items-center justify-between px-4 py-3 bg-slate-900 text-white sticky top-0 z-20">
+      <div className="relative z-[10000] w-[min(900px,96%)] max-w-[900px] bg-white rounded-lg shadow-2xl overflow-hidden">
+        <div className="flex items-center justify-between px-4 py-3 bg-slate-900 text-white">
           <h3 className="font-semibold">Register</h3>
           <button onClick={onClose} className="text-slate-100 bg-transparent px-3 py-1 rounded-md hover:bg-slate-800">Close</button>
         </div>
-        <div className="p-0 bg-white text-gray-900">
+        <div className="p-4 bg-white text-gray-900">
           <div>
             {!widgetReady && !widgetFailed && (
               <div className="flex items-center justify-center py-6">
@@ -186,21 +182,7 @@ const EventbriteModal = ({ open, onClose, eventId, height = 560, popupRef }: Pro
               </div>
             )}
 
-            {/* Container for Eventbrite widget. Give it a max height so it fits on mobile
-                and allow internal scrolling. We also apply a class so we can reliably
-                make any injected iframe responsive via injected CSS. */}
-            <div id={containerId} className="eventbrite-container" style={{ maxHeight: '85vh', overflow: 'auto' }} />
-
-            {/* Inject small stylesheet to force Eventbrite iframes to be responsive inside container.
-                Eventbrite often injects iframes with fixed widths; these rules help them scale. */}
-            <style>{`
-              #${containerId} iframe { width: 100% !important; min-width: 0 !important; height: auto !important; }
-              #${containerId} .eds-widget { width: 100% !important; }
-              /* Ensure the inner iframe doesn't exceed viewport on very small devices */
-              @media (max-width: 480px) {
-                #${containerId} iframe { transform-origin: top left; }
-              }
-            `}</style>
+            <div id={containerId} style={{ minHeight: Math.min(height, window.innerHeight * 0.75), maxHeight: '75vh', overflow: 'auto' }} />
 
             {widgetFailed && (
               <div className="mt-4">

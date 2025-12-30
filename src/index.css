@@ -478,28 +478,7 @@
   .cta-pill-icon { width: 44px; height: 44px; }
 
   /* Keep the icon visually on the right, use padding so label doesn't overlap */
-  /* Keep the icon visually on the right, but avoid absolute positioning
-     which can overlap the centered label on narrow widths. Make the
-     icon flow inline with the label and reserve spacing via padding. */
-  .cta-pill .cta-pill-icon {
-    position: relative;
-    margin-left: 0.5rem;
-    top: 0;
-    transform: none;
-    flex: 0 0 auto;
-  }
-
-  /* Ensure the CTA label is always visible on top of the gradient */
-  .cta-pill-label {
-    color: hsl(var(--primary-foreground));
-    z-index: 2;
-  }
-
-  /* Brand background for small circular icon to improve contrast */
-  .brand-bg {
-    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-    backdrop-filter: saturate(120%);
-  }
+  .cta-pill .cta-pill-icon { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); }
 
   /* Brand utilities */
   .brand-green {
