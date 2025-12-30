@@ -69,7 +69,7 @@ const Hero = ({ onOpenEventbrite }: HeroProps) => {
 
             {/* CTA Button kept as-is */}
             <div className="flex justify-start w-full">
-              <button onClick={() => onOpenEventbrite?.()} aria-label="Buy tickets for Monie Fest 2026" className="cta-pill relative inline-flex items-center gap-4 w-[86%] max-w-[280px] sm:w-auto justify-center">
+              <button onClick={() => onOpenEventbrite?.()} aria-label="Buy tickets for Monie Fest 2026" className="cta-pill relative inline-flex items-center gap-4 w-[86%] max-w-[240px] sm:w-auto justify-center">
                 <span className="cta-pill-label text-white font-semibold">Get ticket</span>
                 <span className="cta-pill-icon brand-bg p-3 rounded-full flex items-center justify-center">
                   <ArrowUpRight className="text-white" />
