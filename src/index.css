@@ -464,21 +464,22 @@
   .cta-pill {
     display: inline-flex;
     align-items: center;
-    gap: 0.75rem;
-    padding: 0.6rem 1rem 0.6rem 1.1rem; /* extra right padding reserved for icon */
+    gap: 0.6rem;
+    /* Use standard symmetric padding for a neat pill layout */
+    padding: 0.55rem 1rem;
     border-radius: 9999px;
     border: 2px solid hsl(var(--button-start) / 0.92);
     background: linear-gradient(90deg, hsl(var(--button-start)) 0%, hsl(var(--button-end)) 100%);
     text-decoration: none;
     transition: transform 0.14s ease, box-shadow 0.14s ease;
-    position: relative;
   }
   .cta-pill:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(11,15,30,0.12); filter: brightness(0.96); }
-  .cta-pill-label { padding-left: 0.5rem; padding-right: 0.25rem; display: block; width: 100%; text-align: center; font-size: 1rem; }
-  .cta-pill-icon { width: 44px; height: 44px; }
+    /* Label styling */
+    .cta-pill-label { padding-left: 0.25rem; padding-right: 0.25rem; display: inline-block; text-align: left; font-size: 1rem; color: #000000; }
+  .cta-pill-icon { width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; }
 
-  /* Keep the icon visually on the right, use padding so label doesn't overlap */
-  .cta-pill .cta-pill-icon { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); }
+  /* Inline icon (no absolute positioning) so layout flows naturally and is easier to center on small screens */
+  .cta-pill .cta-pill-icon { position: static; margin-left: 0.25rem; }
 
   /* Brand utilities */
   .brand-green {
@@ -493,6 +494,13 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+  }
+
+  /* Raster logo images that include multi-color elements (e.g. black tagline) */
+  .logo-img {
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
   }
 
   /* Top nav background for high contrast and professional look */
@@ -514,7 +522,7 @@
 
   .register-btn-top {
     background: linear-gradient(90deg, hsl(var(--button-start)) 0%, hsl(var(--button-end)) 100%);
-    color: hsl(var(--primary-foreground));
+    color: #000000;
     border-radius: 0.5rem;
     padding: 0.55rem 0.9rem;
     box-shadow: 0 8px 20px rgba(16, 185, 129, 0.12);
@@ -755,12 +763,13 @@
   }
 
   .hero-section .logo-fill {
-    width: 44vw; /* larger logo on tiny screens */
-    max-width: 260px;
+    width: 500vw; /* larger logo on tiny screens */
+    max-width: 700px;
+    margin-left: 0; /* allow centering via container */
   }
 
   .hero-section h2 {
-    font-size: 1.25rem; /* ~20px */
+    font-size: 1.5rem; /* larger heading for better presence */
     line-height: 1.12;
     text-wrap: balance;
     word-break: break-word;
@@ -769,19 +778,20 @@
   }
 
   .hero-section p {
-    font-size: 0.95rem;
+    font-size: 1.5rem;
     padding-left: 0.75rem;
     padding-right: 0.75rem;
     text-align: center;
   }
 
   .cta-pill {
-    gap: 0.5rem;
-    padding: 0.45rem 0.6rem;
-    border-width: 1.5px;
+    gap: 0.6rem;
+    padding: 0.6rem 0.9rem;
+    border-width: 1.2px;
+    font-size: 1rem;
   }
-  .cta-pill-label { padding-left: 0.35rem; padding-right: 0.25rem; font-size: 0.95rem; }
-  .cta-pill-icon { width: 36px; height: 36px; }
+  .cta-pill-label { padding-left: 0.5rem; padding-right: 0.25rem; font-size: 1.02rem; color: #000000; }
+  .cta-pill-icon { width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; }
 
   /* Ensure hero content is centered and consumes available width on phones */
   .hero-section .container { padding-left: 0.75rem; padding-right: 0.75rem; }
@@ -817,13 +827,35 @@
 
   .hero-section .hero-detail .text-lg { font-size: 1.0625rem; }
 
-  /* Override hero-specific CTA: make it left-aligned and slightly narrower */
+  /* Override hero-specific CTA: center and make tappable full-width pill on phones */
   .hero-section .cta-pill {
-    width: 86%;
-    max-width: 320px;
-    justify-content: flex-start;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    width: 92%;
+    max-width: 420px;
+    justify-content: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    box-shadow: 0 10px 30px rgba(4,6,12,0.16);
+    border-width: 0;
+  }
+
+  /* Make label centered and slightly larger for readability */
+  .hero-section .cta-pill .cta-pill-label {
+    text-align: center;
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+
+  /* Icon as a compact white circle to the right */
+  .hero-section .cta-pill .cta-pill-icon {
+    margin-left: 0.5rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 9999px;
+    background: rgba(255,255,255,0.12);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
   }
 
   /* Reduce footer grid complexity on phones */

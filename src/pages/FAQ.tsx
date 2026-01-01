@@ -1,4 +1,4 @@
-import Header from "@/components/Header";
+
 import Footer from "@/components/Footer";
 import {
   Accordion,
@@ -108,7 +108,7 @@ const faqs = [
 const FAQPage = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Header />
+      
 
       {/* Hero */}
       <section className="relative min-h-[44vh] flex items-center justify-center">

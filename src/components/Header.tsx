@@ -54,7 +54,7 @@ const Header = ({ onOpenEventbrite }: HeaderProps) => {
             <img
               src={monieLogo}
               alt="Monie Fest logo"
-              className="h-8 md:h-12 w-auto object-contain mr-3"
+              className="h-6 md:h-8 w-auto object-contain mr-2"
               style={{ display: 'block', background: 'transparent' }}
             />
           </Link>
@@ -85,7 +85,20 @@ const Header = ({ onOpenEventbrite }: HeaderProps) => {
                 </NavLink>
               );
             })}
-            <Button size="lg" className="register-btn-top shadow-lg" aria-label="Register for event" onClick={() => onOpenEventbrite?.()}>
+            <Button
+              size="lg"
+              className="register-btn-top shadow-lg text-black"
+              aria-label="Register for event"
+              onClick={() => {
+                if (onOpenEventbrite) return onOpenEventbrite();
+                // Fallback: open Eventbrite page in a new tab when no handler supplied
+                try {
+                  window.open('https://www.eventbrite.com/e/1978806719165', '_blank', 'noopener');
+                } catch (e) {
+                  // ignore
+                }
+              }}
+            >
               REGISTER
             </Button>
           </div>
@@ -135,7 +148,18 @@ const Header = ({ onOpenEventbrite }: HeaderProps) => {
                 );
               })}
               <div className="pt-2">
-                <Button size="lg" className="w-full register-btn-top" onClick={() => onOpenEventbrite?.()}>
+                <Button
+                  size="lg"
+                  className="w-full register-btn-top text-black"
+                  onClick={() => {
+                    if (onOpenEventbrite) return onOpenEventbrite();
+                    try {
+                      window.open('https://www.eventbrite.com/e/1978806719165', '_blank', 'noopener');
+                    } catch (e) {
+                      // ignore
+                    }
+                  }}
+                >
                   REGISTER
                 </Button>
               </div>

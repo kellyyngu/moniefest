@@ -2,9 +2,10 @@ import React from "react";
 
 const placeholderImg = (label = "Logo") => `https://via.placeholder.com/280x140?text=${encodeURIComponent(label)}`;
 
-const supportingPartners = Array.from({ length: 4 }).map((_, i) => placeholderImg(`Supporting+${i+1}`));
+const coOrganizers = Array.from({ length: 1 }).map((_, i) => placeholderImg(`Co-Organizer+${i+1}`));
 const platinumSponsors = Array.from({ length: 4 }).map((_, i) => placeholderImg(`Platinum+${i+1}`));
 const goldSponsors = Array.from({ length: 4 }).map((_, i) => placeholderImg(`Gold+${i+1}`));
+const supportingPartners = Array.from({ length: 4 }).map((_, i) => placeholderImg(`Supporting+${i+1}`));
 const silverSponsors = Array.from({ length: 4 }).map((_, i) => placeholderImg(`Silver+${i+1}`));
 const giftPartners = Array.from({ length: 4 }).map((_, i) => placeholderImg(`Gift+${i+1}`));
 
@@ -59,12 +60,13 @@ const Exhibitors = () => {
       <div className="section-container flex flex-col items-center">
         <div className="mb-12">
           <h2 id="exhibitors-title" className="text-3xl font-bold text-primary text-center mb-6">Supporting Partners & Sponsors</h2>
-          <p className="text-center text-muted-foreground">Below are placeholder logos for the different sponsor categories.</p>
+          <p className="text-center text-muted-foreground">Below are placeholder logos for the different sponsor categories. Order updated per feedback.</p>
         </div>
 
-        <LogoGrid title="Supporting Partners" logos={supportingPartners} fullUrls />
+        <LogoGrid title="Co-Organizer" logos={coOrganizers} fullUrls />
         <LogoGrid title="Platinum Sponsors" logos={platinumSponsors} fullUrls />
         <LogoGrid title="Gold Sponsors" logos={goldSponsors} fullUrls />
+        <LogoGrid title="Supporting Partners" logos={supportingPartners} fullUrls />
         <LogoGrid title="Silver Sponsors" logos={silverSponsors} fullUrls />
         <LogoGrid title="Gift Partners" logos={giftPartners} fullUrls />
       </div>

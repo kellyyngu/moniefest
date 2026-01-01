@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { MapPin, Clock, ArrowUpRight, Users } from "lucide-react";
+import { MapPin, Clock, ArrowUpRight, Users, Calendar } from "lucide-react";
 import heroBg from "@/assets/malaysia.png";
 import monieHeader from "@/assets/monieHeader.png";
 
@@ -24,53 +24,41 @@ const Hero = ({ onOpenEventbrite }: HeroProps) => {
         <div className="max-w-xl md:max-w-3xl animate-fade-in mt-0 md:mt-6 lg:mt-10 text-left">
           <div className="block w-full pr-0 sm:pr-8 md:pr-10 pl-0">
             <div className="flex justify-start mb-4">
-              <div
-                role="img"
-                aria-label="Monie Fest 2026"
-                className="w-64 sm:w-80 md:w-96 lg:w-[420px] logo-fill"
-                style={{
-                  WebkitMaskImage: `url(${monieHeader})`,
-                  maskImage: `url(${monieHeader})`,
-                  WebkitMaskRepeat: 'no-repeat',
-                  maskRepeat: 'no-repeat',
-                  WebkitMaskSize: 'contain',
-                  maskSize: 'contain',
-                  WebkitMaskPosition: 'left center',
-                  maskPosition: 'left center',
-                  height: 'auto',
-                  aspectRatio: '4 / 1'
-                }}
+              <img
+                src={monieHeader}
+                alt="Monie Fest 2026"
+                className="logo-img w-48 sm:w-56 md:w-[320px] lg:w-[380px]"
+                style={{ height: 'auto' }}
               />
             </div>
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-3 leading-tight text-navy-deep">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold mb-3 leading-tight text-navy-deep">
               THE LARGEST FINANCIAL FESTIVAL IN MALAYSIA
             </h2>
 
             <div className="flex flex-col gap-2 items-start justify-start mb-4 hero-detail text-base md:text-lg">
-              <div className="flex flex-col sm:flex-row gap-4 items-start text-left">
+              <div className="flex flex-col gap-3">
                 <div className="flex items-center gap-3">
-                  <MapPin className="text-primary" size={18} aria-hidden />
-                  <span className="text-navy-deep text-lg md:text-xl">Malaysia International Trade and Exhibition Centre, Hall 2</span>
+                  <Calendar className="text-primary w-5 h-5 md:w-6 md:h-6 flex-shrink-0" aria-hidden />
+                  <span className="text-navy-deep text-lg md:text-xl">11 &amp; 12 April 2026</span>
                 </div>
+
                 <div className="flex items-center gap-3">
-                  <Clock className="text-primary" size={18} aria-hidden />
+                  <Clock className="text-primary w-5 h-5 md:w-6 md:h-6 flex-shrink-0" aria-hidden />
                   <span className="text-navy-deep text-lg md:text-xl">10AM - 9PM</span>
                 </div>
-              </div>
 
-              <div className="flex items-center gap-3">
-                <Users className="text-primary" size={18} aria-hidden />
-                <span className="text-navy-deep text-lg md:text-xl">Co-organized: Spire &amp; Foodie</span>
+                <div className="flex items-center gap-3">
+                  <MapPin className="text-primary w-5 h-5 md:w-6 md:h-6 flex-shrink-0" aria-hidden />
+                  <span className="text-navy-deep text-lg md:text-xl">Malaysia International Trade and Exhibition Centre, Hall 2 — North Entrance</span>
+                </div>
               </div>
             </div>
 
-            <p className="text-lg md:text-xl text-navy-deep/90 mb-6 hero-detail">11 &amp; 12 April 2026</p>
-
             {/* CTA Button kept as-is */}
             <div className="flex justify-start w-full">
-              <button onClick={() => onOpenEventbrite?.()} aria-label="Buy tickets for Monie Fest 2026" className="cta-pill relative inline-flex items-center gap-4 w-[86%] max-w-[240px] sm:w-auto justify-center">
-                <span className="cta-pill-label text-white font-semibold">Get ticket</span>
+              <button onClick={() => onOpenEventbrite?.()} aria-label="Register for event" className="cta-pill relative inline-flex items-center gap-4 w-[86%] max-w-[240px] sm:w-auto justify-center">
+                <span className="cta-pill-label text-black font-semibold">REGISTER</span>
                 <span className="cta-pill-icon brand-bg p-3 rounded-full flex items-center justify-center">
                   <ArrowUpRight className="text-white" />
                 </span>

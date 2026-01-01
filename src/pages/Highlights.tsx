@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Header from "@/components/Header";
+
 import Footer from "@/components/Footer";
 import heroBg from "@/assets/malaysia.png";
 
@@ -48,7 +48,7 @@ const BannerUploader: React.FC = () => {
 const HighlightsPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Header />
+      
 
       <section className="relative min-h-[44vh] flex items-center justify-center">
         <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${heroBg})` }}>

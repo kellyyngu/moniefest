@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import heroBg from "@/assets/malaysia.png";
 
@@ -136,7 +135,7 @@ const Programme = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
+      
 
       <section className="relative min-h-[44vh] flex items-center justify-center">
         <div

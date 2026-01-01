@@ -54,43 +54,58 @@ const Footer = () => {
           </div>
 
           {/* Right: Socials */}
-          <div>
-            <div className="footer-title" style={{ marginBottom: 6 }}>Visit Our Socials</div>
-            <div className="footer-socials">
-              <div className="company-column">
-                <div className="company-title">Finance Lang</div>
-                <ul className="company-list">
-                  <li>
-                    <a className="footer-link" href="https://youtube.com/@finance.lang88" target="_blank" rel="noopener noreferrer">Youtube</a>
-                  </li>
-                  <li>
-                    <a className="footer-link" href="https://www.instagram.com/finance.lang" target="_blank" rel="noopener noreferrer">Instagram</a>
-                  </li>
-                  <li>
-                    <a className="footer-link" href="#">RedNote</a>
-                  </li>
-                  <li>
-                    <a className="footer-link" href="#">TikTok</a>
-                  </li>
-                  <li>
-                    <a className="footer-link" href="https://www.financelang.com" target="_blank" rel="noopener noreferrer">Website</a>
-                  </li>
-                </ul>
-              </div>
+          <div className="w-full">
+            <div className="footer-title mb-2">Visit Our Socials</div>
 
-              <div className="company-column">
-                <div className="company-title">Monie</div>
-                <ul className="company-list">
-                  <li>
-                    <a className="footer-link" href="#">Facebook</a>
-                  </li>
-                  <li>
-                    <a className="footer-link" href="#">Instagram</a>
-                  </li>
-                  <li>
-                    <a className="footer-link" href="#">Tiktok</a>
-                  </li>
-                </ul>
+            <div className="mt-4">
+              <div className="sm:flex sm:justify-between sm:items-start sm:gap-5 space-y-6 sm:space-y-0">
+                <div className="sm:flex-1 sm:max-w-[220px] sm:pr-6">
+                  <h4 className="text-primary mb-3 whitespace-nowrap">{"Finance\u00A0Lang"}</h4>
+                  <ul className="space-y-2 md:space-y-2 text-sm md:text-base leading-normal">
+                    <li>
+                      <a className="block text-white/90 hover:text-white" href="https://youtube.com/@finance.lang88" target="_blank" rel="noopener noreferrer">YouTube</a>
+                    </li>
+                    <li>
+                      <a className="block text-white/90 hover:text-white" href="https://www.instagram.com/finance.lang" target="_blank" rel="noopener noreferrer">Instagram</a>
+                    </li>
+                    <li>
+                      <a className="block text-white/90 hover:text-white" href="#">RedNote</a>
+                    </li>
+                    <li>
+                      <a className="block text-white/90 hover:text-white" href="#">TikTok</a>
+                    </li>
+                    <li>
+                      <a className="block text-white/90 hover:text-white" href="https://www.financelang.com" target="_blank" rel="noopener noreferrer">Website</a>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="sm:flex-1 sm:max-w-[200px] sm:px-4">
+                  <h4 className="text-primary mb-3 whitespace-nowrap">Monie</h4>
+                  <ul className="space-y-2 md:space-y-2 text-sm md:text-base leading-normal">
+                    <li>
+                      <a className="block text-white/90 hover:text-white" href="#">Facebook</a>
+                    </li>
+                    <li>
+                      <a className="block text-white/90 hover:text-white" href="#">Instagram</a>
+                    </li>
+                    <li>
+                      <a className="block text-white/90 hover:text-white" href="#">TikTok</a>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="sm:flex-1 sm:max-w-[180px] sm:pl-4">
+                  <h4 className="text-primary mb-3 whitespace-nowrap">{"KL\u00A0Foodie"}</h4>
+                  <ul className="space-y-2 md:space-y-2 text-sm md:text-base leading-normal">
+                    <li>
+                      <a className="block text-white/90 hover:text-white" href="https://www.instagram.com/kl.foodie" target="_blank" rel="noopener noreferrer">Instagram</a>
+                    </li>
+                    <li>
+                      <a className="block text-white/90 hover:text-white" href="https://www.foodiemedia.com" target="_blank" rel="noopener noreferrer">Website</a>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
