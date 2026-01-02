@@ -39,41 +39,66 @@ const sampleSlides: Slide[] = [
   },
 ];
 
-export default function ProgrammePreview({ slides = sampleSlides, autoplayOnce, onFinished }: { slides?: Slide[]; autoplayOnce?: boolean; onFinished?: () => void }) {
+export default function ProgrammePreview({ slides = sampleSlides, autoplayOnce, onFinished, durationMs = 5000 }: { slides?: Slide[]; autoplayOnce?: boolean; onFinished?: () => void; durationMs?: number }) {
   const [index, setIndex] = useState(0);
-  const paused = useRef(false);
+  const [paused, setPaused] = useState(false);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const lastChangeRef = useRef<number>(Date.now());
 
   const length = slides.length;
 
   useEffect(() => {
-    const slideDur = 2000;
-    let id: ReturnType<typeof setInterval> | ReturnType<typeof setTimeout> | null = null;
+    const slideDur = durationMs;
 
-    if (autoplayOnce) {
-      id = setInterval(() => {
-        if (paused.current) return;
-        setIndex((i) => {
-          const next = i + 1;
-          if (next >= length) {
-            if (id) clearInterval(id as any);
-            onFinished && onFinished();
-            return i; // stay on last slide
-          }
-          return next;
-        });
-      }, slideDur);
-    } else {
-      id = setInterval(() => {
-        if (!paused.current) {
-          setIndex((i) => (i + 1) % length);
-        }
-      }, slideDur);
+    if (paused) {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current as any);
+        timeoutRef.current = null;
+      }
+      return;
     }
 
-    return () => {
-      if (id) clearInterval(id as any);
+    // Clear any existing timeout and set a new one so each slide
+    // is shown for `slideDur` from the moment it becomes active.
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current as any);
+    }
+
+    // mark the moment this slide became active
+    lastChangeRef.current = Date.now();
+
+    const schedule = (delay: number) => {
+      timeoutRef.current = setTimeout(() => {
+        const elapsed = Date.now() - lastChangeRef.current;
+        if (elapsed < slideDur - 50) {
+          // if somehow fired early, schedule remaining time
+          schedule(slideDur - elapsed);
+          return;
+        }
+
+        setIndex((i) => {
+          const next = i + 1;
+          if (autoplayOnce) {
+            if (next >= length) {
+              onFinished && onFinished();
+              return i; // stay on last slide
+            }
+            return next;
+          }
+          return next % length;
+        });
+      }, delay);
     };
-  }, [length, autoplayOnce, onFinished]);
+
+    schedule(slideDur);
+
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current as any);
+        timeoutRef.current = null;
+      }
+    };
+  }, [index, length, autoplayOnce, onFinished, paused]);
 
   const current = slides[index];
 
@@ -81,8 +106,8 @@ export default function ProgrammePreview({ slides = sampleSlides, autoplayOnce, 
     <div className="w-full max-w-5xl mx-auto">
       <div
         className="relative bg-card border border-border rounded-xl p-6 md:p-8 shadow-md hover:shadow-lg transition cursor-pointer"
-        onMouseEnter={() => (paused.current = true)}
-        onMouseLeave={() => (paused.current = false)}
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
         role="button"
         tabIndex={0}
       >
