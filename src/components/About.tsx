@@ -24,6 +24,7 @@ export default function About() {
   const previewMeasureRef = useRef<HTMLDivElement | null>(null);
   const [measuredHeight, setMeasuredHeight] = useState<number | null>(null);
   const [isMobileView, setIsMobileView] = useState(false);
+  const cardRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     let t: ReturnType<typeof setTimeout> | undefined;
@@ -53,10 +54,11 @@ export default function About() {
       }
 
       if (mobile) {
-        // On mobile make the card full viewport height so it feels like a focused section.
-        // Use full innerHeight so it covers screen. (If you have a fixed header,
-        // we could subtract its height here.)
-        setMeasuredHeight(window.innerHeight);
+        // On mobile, use the computed content height so the card shows
+        // the full intro without an inner scroll. Add a small extra
+        // padding so the CTA doesn't overlap text.
+        const computedMobileHeight = computed + 24;
+        setMeasuredHeight(computedMobileHeight);
         return;
       }
 
@@ -76,6 +78,13 @@ export default function About() {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
+  // Keep the intro card scrolled to top when its size or visibility changes
+  useEffect(() => {
+    if (!cardRef.current) return;
+    // Reset scroll so the top of content is visible after layout changes
+    cardRef.current.scrollTop = 0;
+  }, [showIntro, measuredHeight, isMobileView]);
+
   return (
     <section className="pt-24 sm:pt-12 pb-10 bg-background" id="programme">
       <div className="container mx-auto px-4">
@@ -90,7 +99,7 @@ export default function About() {
           <div className="relative z-10 py-8 sm:py-12">
             <div className="relative w-full">
               <div className="flex items-center justify-center">
-                <div className={`relative w-full max-w-full bg-card border border-border rounded-xl p-6 shadow-md md:animate-float min-h-[260px] sm:min-h-[320px] lg:min-h-[460px] pb-12 sm:pb-6 overflow-auto ${!showIntro ? 'flex items-center justify-center' : ''}`} style={measuredHeight ? { height: `${measuredHeight}px`, animationDuration: '6s' } : { animationDuration: '6s' }}>
+                <div ref={cardRef} className={`relative w-full max-w-full bg-card border border-border rounded-xl p-6 shadow-md md:animate-float min-h-[260px] sm:min-h-[320px] lg:min-h-[460px] pb-12 sm:pb-6 overflow-visible md:overflow-auto ${isMobileView ? 'pb-24' : ''} ${!showIntro ? 'flex items-center justify-center' : ''}`} style={measuredHeight ? { height: `${measuredHeight}px`, animationDuration: '6s' } : { animationDuration: '6s' }}>
                     {showIntro ? (
                       <div ref={introMeasureRef} className="w-full h-full flex flex-col justify-center relative">
                     <h4 className="text-2xl md:text-3xl font-semibold text-white mb-4">Designed to go beyond traditional finance events, MONIE Fest combines</h4>
