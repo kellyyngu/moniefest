@@ -88,7 +88,7 @@ const Header = ({ onOpenEventbrite }: HeaderProps) => {
             <Button
               size="lg"
               className="register-btn-top shadow-lg text-black"
-              aria-label="Register for event"
+              aria-label="Get ticket"
               onClick={() => {
                 if (onOpenEventbrite) return onOpenEventbrite();
                 // Fallback: open Eventbrite page in a new tab when no handler supplied
@@ -99,7 +99,7 @@ const Header = ({ onOpenEventbrite }: HeaderProps) => {
                 }
               }}
             >
-              REGISTER
+              GET TICKET
             </Button>
           </div>
 
@@ -160,7 +160,7 @@ const Header = ({ onOpenEventbrite }: HeaderProps) => {
                     }
                   }}
                 >
-                  REGISTER
+                  GET TICKET
                 </Button>
               </div>
             </nav>

@@ -102,6 +102,9 @@ const Footer = () => {
                       <a className="block text-white/90 hover:text-white" href="https://www.instagram.com/kl.foodie" target="_blank" rel="noopener noreferrer">Instagram</a>
                     </li>
                     <li>
+                      <a className="block text-white/90 hover:text-white" href="https://www.tiktok.com/@kl.foodie" target="_blank" rel="noopener noreferrer">TikTok</a>
+                    </li>
+                    <li>
                       <a className="block text-white/90 hover:text-white" href="https://www.foodiemedia.com" target="_blank" rel="noopener noreferrer">Website</a>
                     </li>
                   </ul>
@@ -147,11 +150,11 @@ function TicketButton({ eventUrl, eventId }: { eventUrl: string; eventId: string
 
   return (
     <>
-      <button onClick={handleOpen} className="ticket-btn inline-flex items-center gap-3 px-4 py-2 rounded-md text-white" style={{ background: 'linear-gradient(90deg, hsl(var(--cta-start)) 0%, hsl(var(--cta-end)) 100%)' }}>
+      <button onClick={handleOpen} className="ticket-btn inline-flex items-center gap-3 px-4 py-2 rounded-md text-white motion-safe:animate-float" style={{ background: 'linear-gradient(90deg, hsl(var(--cta-start)) 0%, hsl(var(--cta-end)) 100%)' }} aria-label="Get ticket">
         <span className="ticket-icon" aria-hidden>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h14" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg>
         </span>
-        <span className="ticket-label">Get Your Tickets</span>
+        <span className="ticket-label">GET TICKET</span>
       </button>
 
       <EventbriteModal open={open} onClose={handleClose} eventId={eventId} popupRef={popupRef} />

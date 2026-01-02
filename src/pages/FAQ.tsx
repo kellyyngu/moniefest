@@ -39,13 +39,13 @@ const faqs = [
       <>
         <p>Monie Fest 2026 is open to:</p>
         <ul className="list-disc pl-5 mt-2">
-          <li>Working adults</li>
-          <li>Beginner to intermediate investors</li>
-          <li>Entrepreneurs & freelancers</li>
-          <li>Families planning long-term finances</li>
+          <li>Working Personnel</li>
+          <li>Beginner to Intermediate Investors</li>
+          <li>Entrepreneurs &amp; Founders</li>
+          <li>High Net Worth Individual</li>
+          <li>Family Planning / Estate Planning</li>
           <li>Anyone who wants to improve their financial knowledge</li>
         </ul>
-        <p className="mt-3">No prior finance or investment background is required.</p>
       </>
     ),
   },

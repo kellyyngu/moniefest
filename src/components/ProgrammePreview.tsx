@@ -78,9 +78,9 @@ export default function ProgrammePreview({ slides = sampleSlides, autoplayOnce, 
   const current = slides[index];
 
   return (
-    <div className="mt-8 max-w-4xl mx-auto">
+    <div className="w-full max-w-5xl mx-auto">
       <div
-        className="relative bg-card border border-border rounded-xl p-4 md:p-6 shadow-md hover:shadow-lg transition cursor-pointer"
+        className="relative bg-card border border-border rounded-xl p-6 md:p-8 shadow-md hover:shadow-lg transition cursor-pointer"
         onMouseEnter={() => (paused.current = true)}
         onMouseLeave={() => (paused.current = false)}
         role="button"
@@ -88,34 +88,29 @@ export default function ProgrammePreview({ slides = sampleSlides, autoplayOnce, 
       >
         <Link to="/programme" className="block">
           <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
-            <div className="flex-shrink-0 bg-gradient-to-br from-primary to-green-400 text-black font-semibold px-3 py-1 rounded-md text-sm">
+            <div className="flex-shrink-0 bg-gradient-to-br from-primary to-green-400 text-black font-semibold px-3 py-1 rounded-md text-sm md:px-4 md:py-2 md:rounded-lg md:text-base">
               {current.time}
             </div>
 
             <div className="flex-1">
-              <div className="text-white font-semibold text-lg md:text-xl">{current.topic}</div>
-              <div className="mt-2 flex items-center gap-4">
+              <div className="text-white font-semibold text-xl md:text-2xl">{current.topic}</div>
+              <div className="mt-3 flex items-center gap-6 flex-wrap">
                 {current.speakers.map((s) => (
                   <div key={s.name} className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-gray-700 to-gray-600 flex items-center justify-center text-white text-sm font-medium">
+                    <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-gray-700 to-gray-600 flex items-center justify-center text-white text-sm md:text-base font-medium">
                       {s.name.split(' ').map((n) => n[0]).join('').slice(0,2)}
                     </div>
-                    <div className="text-sm text-white/90">{s.name}</div>
+                    <div className="text-sm md:text-base text-white/90">{s.name}</div>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="ml-auto flex items-center gap-3">
-              <span className="inline-flex items-center px-3 py-1 rounded-full bg-primary text-black text-sm font-semibold md:hidden">View</span>
-              <div className="hidden md:block">
-                <div className="text-primary font-semibold">View Programme →</div>
-              </div>
-            </div>
+            <div className="ml-auto" />
           </div>
         </Link>
 
-        <div className="absolute right-4 bottom-4 flex items-center gap-2">
+        <div className="absolute right-6 bottom-6 flex items-center gap-2">
           {slides.map((s, i) => (
             <button
               key={s.id}
