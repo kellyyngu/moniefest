@@ -46,11 +46,11 @@ const Stats = () => {
     <section className="py-8 bg-background">
       <div className="section-container">
          <div className="flex justify-center">
-           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl">
+           <div className="w-full max-w-5xl grid grid-cols-3 sm:grid-cols-3 gap-3 px-2">
           {stats.map((stat, index) => (
             <article
               key={index}
-              className={`relative rounded-xl p-6 bg-card border border-border text-center animate-slide-up`}
+              className={`relative rounded-xl p-2 sm:p-6 bg-card border border-border text-center animate-slide-up min-w-0`}
               style={{ animationDelay: `${index * 80}ms` }}
               aria-labelledby={`stat-${index}-label`}
             >
@@ -60,8 +60,8 @@ const Stats = () => {
                 </div>
               </div>
 
-              <p className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-primary mb-1">{stat.number}</p>
-              <p id={`stat-${index}-label`} className="text-muted-foreground text-sm md:text-base">{stat.label}</p>
+              <p className="text-sm sm:text-lg md:text-4xl lg:text-5xl font-extrabold text-primary mb-1">{stat.number}</p>
+              <p id={`stat-${index}-label`} className="text-muted-foreground text-xs sm:text-sm md:text-base">{stat.label}</p>
             </article>
           ))}
             </div>

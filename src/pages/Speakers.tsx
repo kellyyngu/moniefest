@@ -1,5 +1,6 @@
 
 import Footer from "@/components/Footer";
+import { useEffect, useState } from "react";
 import heroBg from "@/assets/malaysia.png";
 
 type Speaker = { name: string; title?: string; company?: string };
@@ -29,6 +30,25 @@ const SpeakerCard = ({ s }: { s: Speaker }) => (
 );
 
 const SpeakersPage = () => {
+  const [mobileCols, setMobileCols] = useState<number>(() => {
+    try {
+      const v = localStorage.getItem('speakersMobileCols');
+      return v ? Number(v) : 1;
+    } catch (e) {
+      return 1;
+    }
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('speakersMobileCols', String(mobileCols));
+    } catch (e) {}
+  }, [mobileCols]);
+
+  const gridColsClass = mobileCols === 2
+    ? 'grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'
+    : 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4';
+
   return (
     <div className="min-h-screen bg-background">
       
@@ -50,7 +70,24 @@ const SpeakersPage = () => {
 
       <main className="pt-8 pb-16">
         <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 items-start justify-items-center">
+          <div className="flex items-center justify-end gap-2 mb-6 md:hidden">
+            <div className="inline-flex items-center gap-2">
+              <button
+                aria-label="One speaker per row"
+                onClick={() => setMobileCols(1)}
+                className={`px-3 py-1 rounded-md text-sm border ${mobileCols === 1 ? 'bg-primary text-black font-semibold border-primary' : 'border-white/10 text-white bg-transparent hover:bg-white/5'}`}>
+                1 per row
+              </button>
+              <button
+                aria-label="Two speakers per row"
+                onClick={() => setMobileCols(2)}
+                className={`px-3 py-1 rounded-md text-sm border ${mobileCols === 2 ? 'bg-primary text-black font-semibold border-primary' : 'border-white/10 text-white bg-transparent hover:bg-white/5'}`}>
+                2 per row
+              </button>
+            </div>
+          </div>
+
+          <div className={`max-w-5xl mx-auto grid ${gridColsClass} gap-8 items-start justify-items-center`}>
             {speakers.map((s, i) => (
               <SpeakerCard key={i} s={s} />
             ))}

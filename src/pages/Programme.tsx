@@ -6,6 +6,7 @@ type Speaker = {
   name: string;
   title: string;
   company: string;
+  photo?: string;
 };
 
 type Session = {
@@ -59,12 +60,16 @@ const engagementStageScheduleDay2: Session[] = [
 ];
 
 const SpeakerCard = ({ speaker }: { speaker: Speaker }) => {
-  const displayName = "TBD Speaker";
+  const displayName = speaker?.name || "TBD Speaker";
   const initials = displayName.split(" ").map((n) => n[0]).slice(0, 2).join("");
   return (
     <div className="flex items-center gap-3 my-2">
-      <div className="w-14 h-14 rounded-full bg-gradient-to-br from-navy-light to-navy-deep flex items-center justify-center text-primary-foreground font-bold text-lg">
-        {initials}
+      <div className="w-14 h-14 rounded-full overflow-hidden bg-gradient-to-br from-navy-light to-navy-deep flex items-center justify-center text-primary-foreground font-bold text-lg">
+        {speaker.photo ? (
+          <img src={speaker.photo} alt={displayName} className="w-full h-full object-cover" />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center">{initials}</div>
+        )}
       </div>
       <div>
         <p className="font-semibold text-navy-deep">{displayName}</p>
@@ -74,9 +79,14 @@ const SpeakerCard = ({ speaker }: { speaker: Speaker }) => {
     </div>
   );
 };
-
-const SessionRow = ({ session }: { session: Session }) => (
-  <div className="border-b border-border last:border-b-0 py-4">
+const SessionRow = ({ session, onOpen }: { session: Session; onOpen: (s: Session) => void }) => (
+  <div
+    className="border-b border-border last:border-b-0 py-4 cursor-pointer"
+    role="button"
+    tabIndex={0}
+    onClick={() => onOpen(session)}
+    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onOpen(session); }}
+  >
     <div className="flex gap-6 items-start">
       <div className="w-28 flex-shrink-0">
         <div className="bg-primary/10 text-primary px-3 py-2 rounded-md text-sm font-medium text-center">
@@ -132,6 +142,24 @@ const SessionRow = ({ session }: { session: Session }) => (
 const Programme = () => {
   const [activeTab, setActiveTab] = useState<"main" | "engagement">("main");
   const [day, setDay] = useState<1 | 2>(1);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalSession, setModalSession] = useState<Session | null>(null);
+
+  const placeholderImage = (name = "Speaker") => `https://via.placeholder.com/160?text=${encodeURIComponent(name)}`;
+
+  const openModal = (s: Session) => {
+    // If speakers exist and no photo, assign a placeholder URL dynamically (non-mutating)
+    if (s.speakers && s.speakers.length > 0) {
+      s.speakers = s.speakers.map((sp) => ({ ...sp, photo: sp.photo || placeholderImage(sp.name) }));
+    }
+    setModalSession(s);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    setModalSession(null);
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -215,10 +243,38 @@ const Programme = () => {
             {/* Table Body */}
             <div className="bg-card px-4">
               {((day === 1 ? (activeTab === "main" ? mainStageSchedule : engagementStageSchedule) : (activeTab === "main" ? mainStageScheduleDay2 : engagementStageScheduleDay2))).map((session, index) => (
-                <SessionRow key={index} session={session} />
+                <SessionRow key={index} session={session} onOpen={openModal} />
               ))}
             </div>
           </div>
+
+          {/* Modal for session details */}
+          {modalOpen && modalSession && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
+              <div role="dialog" aria-modal="true" className="bg-card rounded-lg max-w-2xl w-full p-6 relative">
+                <button onClick={closeModal} aria-label="Close" className="absolute right-4 top-4 text-muted-foreground text-xl">×</button>
+                <div className="flex flex-col sm:flex-row items-center gap-6">
+                  <div className="w-32 h-32 rounded-full overflow-hidden bg-gray-100 flex-shrink-0">
+                    {modalSession.speakers && modalSession.speakers[0] ? (
+                      <img src={modalSession.speakers[0].photo || placeholderImage(modalSession.speakers[0].name)} alt={modalSession.speakers[0].name} className="w-full h-full object-cover" />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-xl font-bold">{(modalSession.title || 'Session').split(' ').map(s => s[0]).slice(0,2).join('')}</div>
+                    )}
+                  </div>
+
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold text-navy-deep">{modalSession.title || modalSession.panelTitle || 'Session Details'}</h3>
+                    {modalSession.speakers && modalSession.speakers[0] && (
+                      <p className="text-sm text-muted-foreground mt-1">Presented by <span className="font-semibold text-navy-deep">{modalSession.speakers[0].name}</span></p>
+                    )}
+                    {modalSession.description && (
+                      <p className="mt-4 text-muted-foreground">{modalSession.description}</p>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Disclaimer */}
           <p className="text-center text-muted-foreground text-sm mt-8 italic">

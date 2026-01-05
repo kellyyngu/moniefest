@@ -1,4 +1,4 @@
-import { Quote, Star, Twitter } from "lucide-react";
+import { Quote, Star, Instagram } from "lucide-react";
 
 const testimonials = [
   {
@@ -29,7 +29,7 @@ const Testimonials = () => {
     <section className="py-20 bg-background">
       <div className="section-container">
         <h2 className="text-3xl md:text-4xl font-bold text-primary text-center mb-8">
-          What Attendees Say
+          What Speakers Say
         </h2>
 
         <div className="grid md:grid-cols-3 gap-8">
@@ -69,7 +69,7 @@ const Testimonials = () => {
                   aria-label={`Open ${testimonial.author} profile`}
                   className="text-primary inline-flex items-center gap-2 hover:underline"
                 >
-                  <Twitter size={16} />
+                  <Instagram size={16} />
                   {testimonial.author}
                 </a>
               </div>

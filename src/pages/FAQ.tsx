@@ -1,5 +1,6 @@
 
 import Footer from "@/components/Footer";
+import { useRef, useState } from "react";
 import {
   Accordion,
   AccordionContent,
@@ -7,6 +8,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import heroBg from "@/assets/malaysia.png";
+import EventbriteModal from "@/components/EventbriteModal";
 
 const faqs = [
   {
@@ -55,6 +57,7 @@ const faqs = [
       <>
         <p><strong>Tickets are FREE for attendees.</strong></p>
         <p className="mt-2">Pre-registration is required, and entry is subject to capacity.</p>
+        {/* CTA rendered in component so it can open modal */}
       </>
     ),
   },
@@ -87,16 +90,7 @@ const faqs = [
   },
   {
     question: "How do I register and stay updated?",
-    answer: (
-      <>
-        <p>You can:</p>
-        <ul className="list-disc pl-5 mt-2">
-          <li>Register via the official Monie Fest website</li>
-          <li>Follow Monie Fest on social media</li>
-          <li>Subscribe to the Monie Fest newsletter</li>
-        </ul>
-      </>
-    ),
+    answer: null,
   },
   {
     question: "Who is organising Monie Fest 2026?",
@@ -106,6 +100,9 @@ const faqs = [
 ];
 
 const FAQPage = () => {
+  const [ebOpen, setEbOpen] = useState(false);
+  const popupRef = useRef<Window | null>(null);
+
   return (
     <div className="min-h-screen bg-background">
       
@@ -127,11 +124,11 @@ const FAQPage = () => {
       {/* Content */}
       <main className="py-16">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+          <div className="grid grid-cols-1 gap-12 items-start">
             {/* Left column - heading and intro */}
             <div className="space-y-6">
               <h2 className="text-3xl md:text-4xl font-extrabold text-primary">Popular Questions</h2>
-              <p className="text-lg text-muted-foreground max-w-md">
+              <p className="text-lg text-muted-foreground">
                 Discover the essential information you need to know about Monie Fest.
               </p>
 
@@ -142,15 +139,36 @@ const FAQPage = () => {
             </div>
 
             {/* Right column - accordion */}
-            <div>
-              <Accordion type="single" collapsible className="space-y-4">
+            <div className="w-full">
+              <Accordion type="single" collapsible className="space-y-4 w-full">
                 {faqs.map((faq, idx) => (
                   <AccordionItem key={idx} value={`item-${idx}`} className="bg-card rounded-xl p-5 shadow-sm">
                     <AccordionTrigger className="text-navy-deep font-semibold text-left">
                       {faq.question}
                     </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground mt-3">
-                      {faq.answer}
+                    <AccordionContent className="text-white mt-3">
+                      {faq.question === "How do I register and stay updated?" ? (
+                        <>
+                          <p>You can:</p>
+                          <ul className="list-disc pl-5 mt-2">
+                            <li>
+                              <button onClick={() => setEbOpen(true)} className="text-primary font-semibold underline inline">Register</button>
+                              {" "}via the official Monie Fest website
+                            </li>
+                            <li>Follow Monie Fest on social media</li>
+                            <li>Subscribe to the Monie Fest newsletter</li>
+                          </ul>
+                        </>
+                      ) : (
+                        <>
+                          {faq.answer}
+                          {faq.question === "How much are the tickets?" && (
+                            <div className="mt-3">
+                              <button onClick={() => setEbOpen(true)} className="text-primary font-semibold underline">Get your ticket now!</button>
+                            </div>
+                          )}
+                        </>
+                      )}
                     </AccordionContent>
                   </AccordionItem>
                 ))}
@@ -159,6 +177,8 @@ const FAQPage = () => {
           </div>
         </div>
       </main>
+
+      <EventbriteModal open={ebOpen} onClose={() => setEbOpen(false)} eventId="1978806719165" popupRef={popupRef} />
 
       <Footer />
     </div>
