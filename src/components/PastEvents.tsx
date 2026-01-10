@@ -1,6 +1,15 @@
-const placeholder = (i: number) => `https://via.placeholder.com/1200x700?text=Past+Event+${i}`;
-const pastEventPhotos = Array.from({ length: 9 }).map((_, i) => placeholder(i + 1));
-const baseUrl = "";
+import pic1 from "@/assets/past-event-pic-1.jpg";
+import pic2 from "@/assets/past-event-pic-2.jpg";
+import pic3 from "@/assets/past-event-pic-3.jpg";
+import pic4 from "@/assets/past-event-pic-4.jpg";
+import pic5 from "@/assets/past-event-pic-5.jpg";
+import pic6 from "@/assets/past-event-pic-6.jpg";
+import pic7 from "@/assets/past-event-pic-7.jpg";
+import pic8 from "@/assets/past-event-pic-8.jpg";
+import pic9 from "@/assets/past-event-pic-9.jpg";
+import pic10 from "@/assets/past-event-pic-10.jpg";
+
+const pastEventPhotos = [pic1, pic2, pic3, pic4, pic5, pic6, pic7, pic8, pic9, pic10];
 
 const PastEvents = () => {
   const featured = pastEventPhotos[0];

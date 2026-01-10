@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { MapPin, Clock, ArrowUpRight, Users, Calendar } from "lucide-react";
-import heroBg from "@/assets/malaysia.png";
+import heroBg from "@/assets/banner_bg.jpeg";
 import monieHeader from "@/assets/monieHeader.png";
 
 type HeroProps = {
@@ -57,9 +57,9 @@ const Hero = ({ onOpenEventbrite }: HeroProps) => {
             {/* CTA Button kept as-is */}
             <div className="flex justify-start w-full">
               <button onClick={() => onOpenEventbrite?.()} aria-label="Get ticket" className="cta-pill relative inline-flex items-center gap-4 w-[86%] max-w-[240px] sm:w-auto justify-center motion-safe:animate-float">
-                <span className="cta-pill-label text-black font-semibold">GET TICKET</span>
+                <span className="cta-pill-label text-black font-bold" style={{ fontWeight: 700 }}>GET TICKET</span>
                 <span className="cta-pill-icon brand-bg p-3 rounded-full flex items-center justify-center">
-                  <ArrowUpRight className="text-white" />
+                  <ArrowUpRight className="text-black" style={{ color: '#000' }} />
                 </span>
               </button>
             </div>

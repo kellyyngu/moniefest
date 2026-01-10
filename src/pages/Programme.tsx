@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Footer from "@/components/Footer";
-import heroBg from "@/assets/malaysia.png";
+import heroBg from "@/assets/banner_bg.jpeg";
 
 type Speaker = {
   name: string;
@@ -74,7 +74,7 @@ const SpeakerCard = ({ speaker }: { speaker: Speaker }) => {
       <div>
         <p className="font-semibold text-navy-deep">{displayName}</p>
         <p className="text-sm text-primary italic">{speaker.title}</p>
-        <p className="text-sm text-muted-foreground">{speaker.company}</p>
+        <p className="text-sm text-foreground">{speaker.company}</p>
       </div>
     </div>
   );
@@ -192,7 +192,7 @@ const Programme = () => {
               onClick={() => setDay(1)}
               aria-pressed={day === 1}
               className={`px-4 py-2 rounded-full font-semibold transition-all ${
-                day === 1 ? "cta-pill text-primary-foreground" : "bg-transparent text-muted-foreground hover:text-primary border border-primary/10"
+                day === 1 ? "cta-pill text-black" : "bg-transparent text-muted-foreground hover:text-primary border border-primary/10"
               }`}
             >
               Day 1
@@ -201,7 +201,7 @@ const Programme = () => {
               onClick={() => setDay(2)}
               aria-pressed={day === 2}
               className={`px-4 py-2 rounded-full font-semibold transition-all ${
-                day === 2 ? "cta-pill text-primary-foreground" : "bg-transparent text-muted-foreground hover:text-primary border border-primary/10"
+                day === 2 ? "cta-pill text-black" : "bg-transparent text-muted-foreground hover:text-primary border border-primary/10"
               }`}
             >
               Day 2
@@ -214,7 +214,7 @@ const Programme = () => {
               onClick={() => setActiveTab("main")}
               className={`px-6 py-2 rounded-full font-semibold transition-all ${
                 activeTab === "main"
-                  ? "cta-pill text-primary-foreground"
+                  ? "cta-pill text-black"
                   : "bg-transparent text-muted-foreground hover:text-primary border border-primary/10"
               }`}
             >
@@ -224,7 +224,7 @@ const Programme = () => {
               onClick={() => setActiveTab("engagement")}
               className={`px-6 py-2 rounded-full font-semibold transition-all ${
                 activeTab === "engagement"
-                  ? "cta-pill text-primary-foreground"
+                  ? "cta-pill text-black"
                   : "bg-transparent text-muted-foreground hover:text-primary border border-primary/10"
               }`}
             >
@@ -236,8 +236,8 @@ const Programme = () => {
           <div className="mx-auto bg-card rounded-lg overflow-hidden shadow-lg px-2 sm:px-0">
             {/* Table Header */}
             <div className="grid grid-cols-[100px_1fr] md:grid-cols-[120px_1fr] bg-gradient-to-r from-primary to-primary/80">
-              <div className="px-4 py-3 text-primary-foreground font-bold">Time</div>
-              <div className="px-4 py-3 text-primary-foreground font-bold text-center">Topic</div>
+              <div className="px-4 py-3 text-black font-bold">Time</div>
+              <div className="px-4 py-3 text-black font-bold text-center">Topic</div>
             </div>
 
             {/* Table Body */}
@@ -265,7 +265,7 @@ const Programme = () => {
                   <div className="flex-1">
                     <h3 className="text-2xl font-bold text-navy-deep">{modalSession.title || modalSession.panelTitle || 'Session Details'}</h3>
                     {modalSession.speakers && modalSession.speakers[0] && (
-                      <p className="text-sm text-muted-foreground mt-1">Presented by <span className="font-semibold text-navy-deep">{modalSession.speakers[0].name}</span></p>
+                      <p className="text-sm text-foreground mt-1">Presented by <span className="font-semibold text-navy-deep">{modalSession.speakers[0].name}</span></p>
                     )}
                     {modalSession.description && (
                       <p className="mt-4 text-muted-foreground">{modalSession.description}</p>

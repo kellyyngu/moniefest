@@ -87,7 +87,7 @@ const Header = ({ onOpenEventbrite }: HeaderProps) => {
             })}
             <Button
               size="lg"
-              className="register-btn-top shadow-lg text-black"
+              className="register-btn-top shadow-lg text-black font-bold"
               aria-label="Get ticket"
               onClick={() => {
                 if (onOpenEventbrite) return onOpenEventbrite();
@@ -150,7 +150,7 @@ const Header = ({ onOpenEventbrite }: HeaderProps) => {
               <div className="pt-2">
                 <Button
                   size="lg"
-                  className="w-full register-btn-top text-black"
+                  className="w-full register-btn-top text-black font-bold"
                   onClick={() => {
                     if (onOpenEventbrite) return onOpenEventbrite();
                     try {

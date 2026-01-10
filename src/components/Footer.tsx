@@ -45,11 +45,11 @@ const Footer = () => {
           <div className="footer-links">
             <div className="footer-title text-foreground">MONIE FEST 2026</div>
             <ul>
-              <li><Link className="footer-link text-white/90 hover:text-white" to="/programme">Programme</Link></li>
-              <li><Link className="footer-link text-white/90 hover:text-white" to="/speakers">Speakers</Link></li>
-              <li><Link className="footer-link text-white/90 hover:text-white" to="/highlights">Highlights</Link></li>
-              <li><Link className="footer-link text-white/90 hover:text-white" to={{ pathname: '/', hash: '#exhibitors' }}>Sponsors</Link></li>
-              <li><Link className="footer-link text-white/90 hover:text-white" to="/faq">FAQ</Link></li>
+              <li><Link className="footer-link text-white hover:text-white" to="/programme">Programme</Link></li>
+              <li><Link className="footer-link text-white hover:text-white" to="/speakers">Speakers</Link></li>
+              <li><Link className="footer-link text-white hover:text-white" to="/highlights">Highlights</Link></li>
+              <li><Link className="footer-link text-white hover:text-white" to={{ pathname: '/', hash: '#exhibitors' }}>Sponsors</Link></li>
+              <li><Link className="footer-link text-white hover:text-white" to="/faq">FAQ</Link></li>
             </ul>
           </div>
 
@@ -63,19 +63,19 @@ const Footer = () => {
                   <h4 className="text-primary mb-3 whitespace-nowrap">{"Finance\u00A0Lang"}</h4>
                   <ul className="space-y-2 md:space-y-2 text-sm md:text-base leading-normal">
                     <li>
-                      <a className="block text-white/90 hover:text-white" href="https://youtube.com/@finance.lang88" target="_blank" rel="noopener noreferrer">YouTube</a>
+                      <a className="block text-white hover:text-white" href="https://youtube.com/@finance.lang88" target="_blank" rel="noopener noreferrer">YouTube</a>
                     </li>
                     <li>
-                      <a className="block text-white/90 hover:text-white" href="https://www.instagram.com/finance.lang" target="_blank" rel="noopener noreferrer">Instagram</a>
+                      <a className="block text-white hover:text-white" href="https://www.instagram.com/finance.lang" target="_blank" rel="noopener noreferrer">Instagram</a>
                     </li>
                     <li>
-                      <a className="block text-white/90 hover:text-white" href="#">RedNote</a>
+                      <a className="block text-white hover:text-white" href="#">RedNote</a>
                     </li>
                     <li>
-                      <a className="block text-white/90 hover:text-white" href="#">TikTok</a>
+                      <a className="block text-white hover:text-white" href="#">TikTok</a>
                     </li>
                     <li>
-                      <a className="block text-white/90 hover:text-white" href="https://www.financelang.com" target="_blank" rel="noopener noreferrer">Website</a>
+                      <a className="block text-white hover:text-white" href="https://www.financelang.com" target="_blank" rel="noopener noreferrer">Website</a>
                     </li>
                   </ul>
                 </div>
@@ -84,13 +84,13 @@ const Footer = () => {
                   <h4 className="text-primary mb-3 whitespace-nowrap">Monie</h4>
                   <ul className="space-y-2 md:space-y-2 text-sm md:text-base leading-normal">
                     <li>
-                      <a className="block text-white/90 hover:text-white" href="#">Facebook</a>
+                      <a className="block text-white hover:text-white" href="#">Facebook</a>
                     </li>
                     <li>
-                      <a className="block text-white/90 hover:text-white" href="#">Instagram</a>
+                      <a className="block text-white hover:text-white" href="#">Instagram</a>
                     </li>
                     <li>
-                      <a className="block text-white/90 hover:text-white" href="#">TikTok</a>
+                      <a className="block text-white hover:text-white" href="#">TikTok</a>
                     </li>
                   </ul>
                 </div>
@@ -99,13 +99,13 @@ const Footer = () => {
                   <h4 className="text-primary mb-3 whitespace-nowrap">{"KL\u00A0Foodie"}</h4>
                   <ul className="space-y-2 md:space-y-2 text-sm md:text-base leading-normal">
                     <li>
-                      <a className="block text-white/90 hover:text-white" href="https://www.instagram.com/kl.foodie" target="_blank" rel="noopener noreferrer">Instagram</a>
+                      <a className="block text-white hover:text-white" href="https://www.instagram.com/kl.foodie" target="_blank" rel="noopener noreferrer">Instagram</a>
                     </li>
                     <li>
-                      <a className="block text-white/90 hover:text-white" href="https://www.tiktok.com/@kl.foodie" target="_blank" rel="noopener noreferrer">TikTok</a>
+                      <a className="block text-white hover:text-white" href="https://www.tiktok.com/@kl.foodie" target="_blank" rel="noopener noreferrer">TikTok</a>
                     </li>
                     <li>
-                      <a className="block text-white/90 hover:text-white" href="https://www.foodiemedia.com" target="_blank" rel="noopener noreferrer">Website</a>
+                      <a className="block text-white hover:text-white" href="https://www.foodiemedia.com" target="_blank" rel="noopener noreferrer">Website</a>
                     </li>
                   </ul>
                 </div>
@@ -114,9 +114,9 @@ const Footer = () => {
           </div>
         </div>
 
-          <div className="mt-10 border-t-2 border-white/10 pt-6 text-sm text-white/80">
+          <div className="mt-10 border-t-2 border-white/10 pt-6 text-sm text-white">
             <div className="flex flex-col md:flex-row items-center justify-center text-center gap-3">
-              <div className="text-white/70">© {new Date().getFullYear()} Monie Fest — All rights reserved.</div>
+              <div className="text-white">© {new Date().getFullYear()} Monie Fest — All rights reserved.</div>
             </div>
         </div>
         {/* Modal removed: open Eventbrite in a new tab instead of an embedded modal */}
@@ -150,11 +150,11 @@ function TicketButton({ eventUrl, eventId }: { eventUrl: string; eventId: string
 
   return (
     <>
-      <button onClick={handleOpen} className="ticket-btn inline-flex items-center gap-3 px-4 py-2 rounded-md text-white motion-safe:animate-float" style={{ background: 'linear-gradient(90deg, hsl(var(--cta-start)) 0%, hsl(var(--cta-end)) 100%)' }} aria-label="Get ticket">
-        <span className="ticket-icon" aria-hidden>
+      <button onClick={handleOpen} className="ticket-btn inline-flex items-center gap-3 px-4 py-2 rounded-md text-black font-bold motion-safe:animate-float" style={{ background: 'linear-gradient(90deg, hsl(var(--cta-start)) 0%, hsl(var(--cta-end)) 100%)', color: '#000', fontWeight: 700 }} aria-label="Get ticket">
+        <span className="ticket-icon" aria-hidden style={{ color: '#000' }}>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h14" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg>
         </span>
-        <span className="ticket-label">GET TICKET</span>
+        <span className="ticket-label" style={{ color: '#000', fontWeight: 700 }}>GET TICKET</span>
       </button>
 
       <EventbriteModal open={open} onClose={handleClose} eventId={eventId} popupRef={popupRef} />

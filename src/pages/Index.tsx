@@ -3,7 +3,7 @@ import Hero from "@/components/Hero";
 import Stats from "@/components/Stats";
 import WhatIsMonie from "@/components/WhatIsMonie";
 import About from "@/components/About";
-import Testimonials from "@/components/Testimonials";
+import SpeakersQuotes from "@/components/SpeakersQuotes";
 import PastEvents from "@/components/PastEvents";
 import Exhibitors from "@/components/Exhibitors";
 // PremierEvent and Pricing sections removed from homepage
@@ -21,7 +21,7 @@ const Index = ({ onOpenEventbrite }: IndexProps) => {
       <Stats />
       <WhatIsMonie />
       <About />
-      <Testimonials />
+      <SpeakersQuotes />
       <PastEvents />
       <Exhibitors />
       {/* PremierEvent, Pricing, and Partners removed */}

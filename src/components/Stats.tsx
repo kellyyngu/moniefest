@@ -61,7 +61,7 @@ const Stats = () => {
               </div>
 
               <p className="text-sm sm:text-lg md:text-4xl lg:text-5xl font-extrabold text-primary mb-1">{stat.number}</p>
-              <p id={`stat-${index}-label`} className="text-muted-foreground text-xs sm:text-sm md:text-base">{stat.label}</p>
+              <p id={`stat-${index}-label`} className="text-foreground text-xs sm:text-sm md:text-base font-semibold">{stat.label}</p>
             </article>
           ))}
             </div>

@@ -125,7 +125,7 @@ export default function ProgrammePreview({ slides = sampleSlides, autoplayOnce, 
                     <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-gray-700 to-gray-600 flex items-center justify-center text-white text-sm md:text-base font-medium">
                       {s.name.split(' ').map((n) => n[0]).join('').slice(0,2)}
                     </div>
-                    <div className="text-sm md:text-base text-white/90">{s.name}</div>
+                    <div className="text-sm md:text-base text-white">{s.name}</div>
                   </div>
                 ))}
               </div>

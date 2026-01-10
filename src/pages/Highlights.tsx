@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import Footer from "@/components/Footer";
-import heroBg from "@/assets/malaysia.png";
+import heroBg from "@/assets/banner_bg.jpeg";
 
 const BannerUploader: React.FC = () => {
   const [previews, setPreviews] = useState<(string | null)[]>([null, null, null, null, null]);

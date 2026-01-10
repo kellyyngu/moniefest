@@ -1,7 +1,7 @@
 
 import Footer from "@/components/Footer";
 import { useEffect, useState } from "react";
-import heroBg from "@/assets/malaysia.png";
+import heroBg from "@/assets/banner_bg.jpeg";
 
 type Speaker = { name: string; title?: string; company?: string };
 
@@ -24,7 +24,7 @@ const SpeakerCard = ({ s }: { s: Speaker }) => (
     <div className="text-center">
       <p className="font-semibold text-navy-deep text-lg">{s.name}</p>
       <p className="text-sm text-primary italic mt-1">{s.title}</p>
-      <p className="text-sm text-muted-foreground mt-1">{s.company}</p>
+      <p className="text-sm text-foreground mt-1">{s.company}</p>
     </div>
   </div>
 );

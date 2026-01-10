@@ -1,8 +1,10 @@
 import React from "react";
+import foodieLogo from "@/assets/Foodie-Red.png";
+import spireLogo from "@/assets/Spire-Black.png";
 
 const placeholderImg = (label = "Logo") => `https://via.placeholder.com/280x140?text=${encodeURIComponent(label)}`;
 
-const coOrganizers = Array.from({ length: 1 }).map((_, i) => placeholderImg(`Co-Organizer+${i+1}`));
+const coOrganizers = [foodieLogo, spireLogo];
 const platinumSponsors = Array.from({ length: 4 }).map((_, i) => placeholderImg(`Platinum+${i+1}`));
 const goldSponsors = Array.from({ length: 4 }).map((_, i) => placeholderImg(`Gold+${i+1}`));
 const supportingPartners = Array.from({ length: 4 }).map((_, i) => placeholderImg(`Supporting+${i+1}`));
@@ -15,11 +17,15 @@ interface LogoGridProps {
   title: string;
   logos: string[];
   fullUrls?: boolean;
+  hideCaption?: boolean;
+  logoOnly?: boolean;
 }
 
 const formatAlt = (nameOrFilename: string) => {
   if (!nameOrFilename) return "logo";
-  const cleaned = nameOrFilename
+  // Remove query params, directories, and extensions, then normalize separators
+  const base = nameOrFilename.split("?")[0].split("/").pop()?.split("\\").pop() || nameOrFilename;
+  const cleaned = base
     .replace(/^img[_-]?/i, "")
     .replace(/\.(jpg|jpeg|png|svg)$/i, "")
     .replace(/[_-]+/g, " ")
@@ -30,26 +36,46 @@ const formatAlt = (nameOrFilename: string) => {
     .join(" ");
 };
 
-const LogoGrid = ({ title, logos, fullUrls }: LogoGridProps) => (
+const LogoGrid = ({ title, logos, fullUrls, hideCaption, logoOnly }: LogoGridProps) => (
   <div className="mb-16 w-full">
     <h3 className="text-2xl font-bold text-foreground text-center mb-8">{title}</h3>
     <div className="max-w-6xl mx-auto">
-      <div className="grid grid-cols-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 justify-items-center justify-center">
-        {logos.map((logo, index) => (
-          <div
-            key={index}
-            className="bg-white rounded-xl p-4 sm:p-6 flex flex-col items-center justify-center w-full sm:w-64 h-36 sm:h-44 shadow-sm hover:shadow-md transition-transform hover:-translate-y-1"
-          >
-            <img
-              src={fullUrls ? logo : `${baseUrl}${logo}`}
-              alt={formatAlt(fullUrls ? logo : logo)}
-              title={formatAlt(fullUrls ? logo : logo)}
-              className="max-w-[85%] max-h-[60%] object-contain"
-            />
-            <div className="mt-3 text-sm text-muted-foreground text-center">{formatAlt(fullUrls ? logo : logo)}</div>
-          </div>
-        ))}
-      </div>
+      {logoOnly ? (
+        <div className="grid grid-cols-2 gap-4 px-4 sm:flex sm:flex-row sm:items-center sm:justify-center sm:gap-6">
+          {logos.map((logo, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-xl p-3 sm:p-6 flex items-center justify-center w-full sm:w-56 h-28 sm:h-44 shadow-sm"
+            >
+              <img
+                src={fullUrls ? logo : `${baseUrl}${logo}`}
+                alt={formatAlt(fullUrls ? logo : logo)}
+                title={formatAlt(fullUrls ? logo : logo)}
+                className="max-w-[90%] max-h-[80%] object-contain"
+              />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="grid grid-cols-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 justify-items-center justify-center">
+          {logos.map((logo, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-xl p-4 sm:p-6 flex flex-col items-center justify-center w-full sm:w-64 h-36 sm:h-44 shadow-sm hover:shadow-md transition-transform hover:-translate-y-1"
+            >
+              <img
+                src={fullUrls ? logo : `${baseUrl}${logo}`}
+                alt={formatAlt(fullUrls ? logo : logo)}
+                title={formatAlt(fullUrls ? logo : logo)}
+                className="max-w-[85%] max-h-[60%] object-contain"
+              />
+              {!hideCaption && (
+                <div className="mt-3 text-sm text-muted-foreground text-center">{formatAlt(fullUrls ? logo : logo)}</div>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   </div>
 );
@@ -63,10 +89,10 @@ const Exhibitors = () => {
           <p className="text-center text-muted-foreground">Below are placeholder logos for the different sponsor categories. Order updated per feedback.</p>
         </div>
 
-        <LogoGrid title="Co-Organizer" logos={coOrganizers} fullUrls />
+        <LogoGrid title="Co-Organizer" logos={coOrganizers} fullUrls hideCaption logoOnly />
+        <LogoGrid title="Supporting Partners" logos={supportingPartners} fullUrls />
         <LogoGrid title="Platinum Sponsors" logos={platinumSponsors} fullUrls />
         <LogoGrid title="Gold Sponsors" logos={goldSponsors} fullUrls />
-        <LogoGrid title="Supporting Partners" logos={supportingPartners} fullUrls />
         <LogoGrid title="Silver Sponsors" logos={silverSponsors} fullUrls />
         <LogoGrid title="Gift Partners" logos={giftPartners} fullUrls />
       </div>
