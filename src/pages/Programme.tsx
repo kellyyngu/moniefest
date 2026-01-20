@@ -24,14 +24,42 @@ type Session = {
 };
 
 const mainStageSchedule: Session[] = [
-  { time: "9.00am - 9.30am", title: "Registration & Networking", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-  { time: "9.30am - 10.00am", title: "Opening Remarks", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante." },
-  { time: "10.00am - 11.00am", isPanel: true, panelNumber: 1, panelTitle: "Panel: Industry Insights (Placeholder)", bullets: ["Lorem ipsum dolor sit amet, consectetur.", "Sed do eiusmod tempor incididunt ut labore."], speakers: [{ name: "TBD Speaker", title: "Panelist", company: "Organization" }, { name: "TBD Speaker", title: "Panelist", company: "Organization" }], moderator: { name: "TBD Moderator", title: "Moderator", company: "Organization" } },
-  { time: "11.15am - 12.00pm", title: "Keynote (Placeholder)", description: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore." },
-  { time: "12.00pm - 1.00pm", title: "Lunch Break & Networking", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-  { time: "1.00pm - 2.00pm", isPanel: true, panelNumber: 2, panelTitle: "Panel: Strategies & Trends (Placeholder)", bullets: ["Ut enim ad minim veniam.", "Quis nostrud exercitation ullamco laboris nisi ut aliquip."], speakers: [{ name: "TBD Speaker", title: "Panelist", company: "Organization" }], moderator: { name: "TBD Moderator", title: "Moderator", company: "Organization" } },
-  { time: "2.15pm - 3.00pm", title: "Afternoon Session (Placeholder)", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-  { time: "3.15pm - 4.00pm", title: "Closing Remarks (Placeholder)", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
+  { time: "11:00 - 11:15", title: "Opening Speech", description: "", speakers: [{ name: "Guest of Honour", title: "Guest of Honour", company: "" }] },
+  { time: "11:15 - 11:30", title: "Monie Introduction", description: "", speakers: [{ name: "Lim Pinn Yang", title: "Chief Executive Officer", company: "Foodie Media Berhad" }] },
+  { time: "11:30 - 11:45", title: "Opening Ceremony", description: "", speakers: [
+    { name: "Guest of Honour", title: "Guest of Honour", company: "" },
+    { name: "Lim Pinn Yang", title: "Chief Executive Officer", company: "Foodie Media Berhad" },
+    { name: "George Poh, CFP®", title: "Chief Executive Officer", company: "Spire Digital Sdn. Bhd." },
+  ] },
+  { time: "11:45 - 12:00", title: "Break", description: "" },
+  { time: "12:45 - 13:30", isPanel: true, panelNumber: 1, panelTitle: "Malaysia's Economic Growth Outlook for 2H 2026", bullets: [], speakers: [
+      { name: "Bursa CEO / Khazanah", title: "", company: "" },
+      { name: "Exhibitor A", title: "", company: "" },
+      { name: "Brahmal", title: "", company: "" },
+    ], moderator: { name: "George Poh, CFP®", title: "Chief Executive Officer", company: "Spire Digital Sdn. Bhd." },
+    description: "" },
+  { time: "13:30 - 14:15", title: "Investment Talk 1", description: "", speakers: [{ name: "Exhibitor B", title: "", company: "" }] },
+  { time: "14:15 - 15:00", isPanel: true, panelNumber: 2, panelTitle: "How Government Policies Quietly Shape Your Personal Finances", bullets: [], speakers: [
+      { name: "Dr Ong Kian Ming", title: "", company: "" },
+      { name: "Khairy", title: "", company: "" },
+      { name: "Exhibitor C", title: "", company: "" },
+    ], moderator: { name: "Peter (Host)", title: "Host", company: "" }, description: "" },
+  { time: "15:00 - 15:45", title: "Investment Talk 2", description: "", speakers: [{ name: "Exhibitor D", title: "", company: "" }] },
+  { time: "15:45 - 16:00", title: "Lucky Draw", isSpecial: true, specialImage: "", description: "" },
+  { time: "16:00 - 16:45", title: "Investment Talk 3", description: "", speakers: [{ name: "Exhibitor E", title: "", company: "" }] },
+  { time: "16:45 - 17:30", isPanel: true, panelNumber: 3, panelTitle: "Can Crypto Coexist With a Boring, Stable Financial Plan?", bullets: [], speakers: [
+      { name: "Coingecko", title: "", company: "" },
+      { name: "Hann (Halogen)", title: "", company: "" },
+      { name: "David (Hata)", title: "", company: "" },
+    ], description: "" },
+  { time: "17:30 - 18:15", title: "Investment Talk 4", description: "", speakers: [{ name: "Exhibitor F", title: "", company: "" }] },
+  { time: "18:15 - 19:00", isPanel: true, panelNumber: 4, panelTitle: "When Passion Meets Planning: How to Turn Dreams into Reality", bullets: [], speakers: [
+      { name: "Khairul Aming", title: "", company: "" },
+      { name: "Lim Pinn Yang", title: "Chief Executive Officer", company: "Foodie Media Berhad (host)" },
+      { name: "Siti Nurhaliza", title: "", company: "" },
+    ], description: "" },
+  { time: "19:00 - 19:45", title: "Investment Talk 5", description: "", speakers: [{ name: "Exhibitor G", title: "", company: "" }] },
+  { time: "19:45 - 20:00", title: "Lucky Draw", isSpecial: true, specialImage: "", description: "" },
 ];
 
 const engagementStageSchedule: Session[] = [
