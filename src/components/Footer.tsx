@@ -1,4 +1,4 @@
-import monieLogo from "@/assets/monielogo.png";
+import monieLogo from "@/assets/monielogo.webp";
 import { Link } from "react-router-dom";
 import { useRef, useState } from "react";
 import EventbriteModal from "./EventbriteModal";

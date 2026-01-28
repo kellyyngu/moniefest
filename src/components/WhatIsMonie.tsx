@@ -1,4 +1,4 @@
-import heroBg from "@/assets/banner_bg.jpeg";
+import heroBg from "@/assets/banner_bg.webp";
 
 const Icon = ({ name }: { name: string }) => {
   if (name === 'engage') {

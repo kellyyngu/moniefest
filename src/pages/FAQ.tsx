@@ -7,7 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import heroBg from "@/assets/banner_bg.jpeg";
+import heroBg from "@/assets/banner_bg.webp";
 import EventbriteModal from "@/components/EventbriteModal";
 
 const faqs = [

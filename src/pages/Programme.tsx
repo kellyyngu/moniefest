@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Footer from "@/components/Footer";
-import heroBg from "@/assets/banner_bg.jpeg";
+import heroBg from "@/assets/banner_bg.webp";
 
 type Speaker = {
   name: string;

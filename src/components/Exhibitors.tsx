@@ -1,26 +1,39 @@
 import React from "react";
-import foodieLogo from "@/assets/Foodie-Red.png";
-import spireLogo from "@/assets/Spire-Black.png";
-import benchxLogo from "@/assets/benchxcapital.png";
-import webullLogo from "@/assets/webull.png";
-import lunoLogo from "@/assets/luno.png";
+import foodieLogo from "@/assets/Foodie-Red.webp";
+import spireLogo from "@/assets/Spire-Black.webp";
+import benchxLogo from "@/assets/benchxcapital.webp";
+import webullLogo from "@/assets/webull.webp";
+import lunoLogo from "@/assets/luno.webp";
+import moomooLogo from "@/assets/moomoo.webp";
+import microleapLogo from "@/assets/microleap.webp";
+import gambitCustody from "@/assets/gambitCustody.webp";
+import gambitTrustees from "@/assets/gambitTrustees.webp";
 
 const placeholderImg = (label = "Logo") => `https://via.placeholder.com/280x140?text=${encodeURIComponent(label)}`;
 
 const coOrganizers = [foodieLogo, spireLogo];
 const strategicPartners = [benchxLogo];
 const platinumSponsors = [
-  webullLogo,
+  gambitTrustees, // Digital Trustees (alphabetical order per request)
+  gambitCustody,
   lunoLogo,
-  placeholderImg("Platinum+3"),
+  moomooLogo,
+  webullLogo,
   placeholderImg("Platinum+4"),
 ];
 const goldSponsors = Array.from({ length: 4 }).map((_, i) => placeholderImg(`Gold+${i+1}`));
 const supportingPartners = Array.from({ length: 4 }).map((_, i) => placeholderImg(`Supporting+${i+1}`));
-const silverSponsors = Array.from({ length: 4 }).map((_, i) => placeholderImg(`Silver+${i+1}`));
+const silverSponsors = [microleapLogo, ...Array.from({ length: 3 }).map((_, i) => placeholderImg(`Silver+${i+2}`))];
 const giftPartners = Array.from({ length: 4 }).map((_, i) => placeholderImg(`Gift+${i+1}`));
 
 const baseUrl = "";
+
+// Map specific logo imports to external URLs for hyperlinking
+const logoLinkMap: Record<string, string> = {
+  [foodieLogo]: "https://foodiemedia.com/",
+  [spireLogo]: "https://www.financelang.com",
+  [benchxLogo]: "https://www.benchxcapital.com/",
+};
 
 interface LogoGridProps {
   title: string;
@@ -28,6 +41,11 @@ interface LogoGridProps {
   fullUrls?: boolean;
   hideCaption?: boolean;
   logoOnly?: boolean;
+  // Optional custom classes for different layouts
+  columnsClass?: string;
+  cardClass?: string;
+  imgClass?: string;
+  containerClass?: string;
 }
 
 const formatAlt = (nameOrFilename: string) => {
@@ -36,7 +54,7 @@ const formatAlt = (nameOrFilename: string) => {
   const base = nameOrFilename.split("?")[0].split("/").pop()?.split("\\").pop() || nameOrFilename;
   const cleaned = base
     .replace(/^img[_-]?/i, "")
-    .replace(/\.(jpg|jpeg|png|svg)$/i, "")
+    .replace(/\.(jpg|jpeg|png|svg|webp)$/i, "")
     .replace(/[_-]+/g, " ")
     .trim();
   return cleaned
@@ -45,58 +63,50 @@ const formatAlt = (nameOrFilename: string) => {
     .join(" ");
 };
 
-const LogoGrid = ({ title, logos, fullUrls, hideCaption, logoOnly }: LogoGridProps) => {
-  // On mobile, use 1/2/3 columns depending on number of logos so small counts stretch full width.
-  const mobileColsClass = logoOnly
-    ? logos.length === 1
-      ? "grid-cols-1"
-      : logos.length === 2
-      ? "grid-cols-2"
-      : "grid-cols-3"
-    : "grid-cols-3";
+const LogoGrid = ({ title, logos, fullUrls, hideCaption, logoOnly, columnsClass, cardClass, imgClass, containerClass }: LogoGridProps) => {
+  // Determine a responsive columns class for small counts on mobile
+  // Show two columns on the smallest screens to match co-organiser layout
+  const mobileColsClass = "grid-cols-2";
+
+  const colsClass = columnsClass ?? "lg:grid-cols-4";
+  const container = containerClass ?? "max-w-6xl";
 
   return (
     <div className="mb-16 w-full">
       <h3 className="text-2xl font-bold text-foreground text-center mb-8">{title}</h3>
-      <div className="max-w-6xl mx-auto">
-        {logoOnly ? (
-          <div className="flex justify-center">
-            <div className={`inline-grid ${mobileColsClass} gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 justify-items-center`}>
-              {logos.map((logo, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-xl p-3 sm:p-6 flex items-center justify-center w-full h-28 sm:h-44 shadow-sm"
-                >
-                  <img
-                    src={fullUrls ? logo : `${baseUrl}${logo}`}
-                    alt={formatAlt(fullUrls ? logo : logo)}
-                    title={formatAlt(fullUrls ? logo : logo)}
-                    className="max-w-[85%] max-h-[70%] object-contain"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        ) : (
-          <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 justify-items-center justify-center">
-            {logos.map((logo, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-xl p-4 sm:p-6 flex flex-col items-center justify-center w-full sm:w-64 h-36 sm:h-44 shadow-sm hover:shadow-md transition-transform hover:-translate-y-1"
-              >
-                <img
-                  src={fullUrls ? logo : `${baseUrl}${logo}`}
-                  alt={formatAlt(fullUrls ? logo : logo)}
-                  title={formatAlt(fullUrls ? logo : logo)}
-                  className="max-w-[85%] max-h-[60%] object-contain"
-                />
-                {!hideCaption && (
-                  <div className="mt-3 text-sm text-muted-foreground text-center">{formatAlt(fullUrls ? logo : logo)}</div>
-                )}
-              </div>
-            ))}
-          </div>
-        )}
+      <div className={`w-full ${container} mx-auto px-4 sm:px-6`}>
+        <div className={`grid ${mobileColsClass} sm:grid-cols-2 md:grid-cols-3 ${colsClass} gap-6 sm:gap-8 md:gap-10 lg:gap-12 justify-items-center`}>
+              {logos.map((logo, index) => {
+                const href = logoLinkMap[(fullUrls ? logo : logo) as string];
+                return (
+                  <div
+                    key={index}
+                    className={
+                      cardClass ??
+                      "bg-white rounded-xl p-4 sm:p-6 flex items-center justify-center w-full sm:w-64 h-36 sm:h-44 shadow-sm"
+                    }
+                  >
+                    {href ? (
+                      <a href={href} target="_blank" rel="noopener noreferrer">
+                        <img
+                          src={fullUrls ? logo : `${baseUrl}${logo}`}
+                          alt={formatAlt(fullUrls ? logo : logo)}
+                          title={formatAlt(fullUrls ? logo : logo)}
+                          className={imgClass ?? "max-w-[75%] max-h-[65%] object-contain"}
+                        />
+                      </a>
+                    ) : (
+                      <img
+                        src={fullUrls ? logo : `${baseUrl}${logo}`}
+                        alt={formatAlt(fullUrls ? logo : logo)}
+                        title={formatAlt(fullUrls ? logo : logo)}
+                        className={imgClass ?? "max-w-[75%] max-h-[65%] object-contain"}
+                      />
+                    )}
+                  </div>
+                );
+              })}
+        </div>
       </div>
     </div>
   );
@@ -116,11 +126,20 @@ const Exhibitors = () => {
           <h3 className="text-2xl font-bold text-foreground text-center mb-8">Co-organisers</h3>
           <div className="flex justify-center">
             <div className="inline-grid grid-cols-2 gap-6">
-              {coOrganizers.map((logo, idx) => (
-                <div key={idx} className="bg-white rounded-xl p-4 sm:p-6 flex items-center justify-center w-full sm:w-64 h-36 sm:h-44 shadow-sm">
-                  <img src={logo} alt={formatAlt(logo)} className="max-w-[85%] max-h-[60%] object-contain" />
-                </div>
-              ))}
+              {coOrganizers.map((logo, idx) => {
+                const href = logoLinkMap[logo as string];
+                return (
+                  <div key={idx} className="bg-white rounded-xl p-4 sm:p-6 flex items-center justify-center w-full sm:w-64 h-36 sm:h-44 shadow-sm">
+                    {href ? (
+                      <a href={href} target="_blank" rel="noopener noreferrer">
+                        <img src={logo} alt={formatAlt(logo)} className="max-w-[85%] max-h-[60%] object-contain" />
+                      </a>
+                    ) : (
+                      <img src={logo} alt={formatAlt(logo)} className="max-w-[85%] max-h-[60%] object-contain" />
+                    )}
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -130,19 +149,28 @@ const Exhibitors = () => {
           <h3 className="text-2xl font-bold text-foreground text-center mb-8">Strategic Partner</h3>
           <div className="flex justify-center">
             <div className="inline-grid grid-cols-1 gap-6">
-              {strategicPartners.map((logo, idx) => (
-                <div key={idx} className="bg-white rounded-xl p-4 sm:p-6 flex items-center justify-center w-full sm:w-64 h-36 sm:h-44 shadow-sm">
-                  <img src={logo} alt={formatAlt(logo)} className="max-w-[85%] max-h-[60%] object-contain" />
-                </div>
-              ))}
+              {strategicPartners.map((logo, idx) => {
+                const href = logoLinkMap[logo as string];
+                return (
+                  <div key={idx} className="bg-white rounded-xl p-4 sm:p-6 flex items-center justify-center w-full sm:w-64 h-36 sm:h-44 shadow-sm">
+                    {href ? (
+                      <a href={href} target="_blank" rel="noopener noreferrer">
+                        <img src={logo} alt={formatAlt(logo)} className="max-w-[85%] max-h-[60%] object-contain" />
+                      </a>
+                    ) : (
+                      <img src={logo} alt={formatAlt(logo)} className="max-w-[85%] max-h-[60%] object-contain" />
+                    )}
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
-        <LogoGrid title="Supporting Partners" logos={supportingPartners} fullUrls />
+        <LogoGrid title="Supporting Partners" logos={supportingPartners} fullUrls hideCaption logoOnly />
         <LogoGrid title="Platinum Sponsors" logos={platinumSponsors} fullUrls hideCaption logoOnly />
-        <LogoGrid title="Gold Sponsors" logos={goldSponsors} fullUrls />
-        <LogoGrid title="Silver Sponsors" logos={silverSponsors} fullUrls />
-        <LogoGrid title="Gift Partners" logos={giftPartners} fullUrls />
+        <LogoGrid title="Gold Sponsors" logos={goldSponsors} fullUrls hideCaption logoOnly />
+        <LogoGrid title="Silver Sponsors" logos={silverSponsors} fullUrls hideCaption logoOnly />
+        <LogoGrid title="Gift Partners" logos={giftPartners} fullUrls hideCaption logoOnly />
       </div>
     </section>
   );

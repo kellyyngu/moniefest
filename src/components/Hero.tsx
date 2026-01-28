@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { MapPin, Clock, ArrowUpRight, Users, Calendar } from "lucide-react";
-import heroBg from "@/assets/banner_bg.jpeg";
+import heroBg from "@/assets/mitec.webp";
 import monieHeader from "@/assets/moniefest2026.svg";
 
 type HeroProps = {

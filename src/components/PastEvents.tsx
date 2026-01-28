@@ -1,13 +1,13 @@
-import pic1 from "@/assets/past-event-pic-1.jpg";
-import pic2 from "@/assets/past-event-pic-2.jpg";
-import pic3 from "@/assets/past-event-pic-3.jpg";
-import pic4 from "@/assets/past-event-pic-4.jpg";
-import pic5 from "@/assets/past-event-pic-5.jpg";
-import pic6 from "@/assets/past-event-pic-6.jpg";
-import pic7 from "@/assets/past-event-pic-7.jpg";
-import pic8 from "@/assets/past-event-pic-8.jpg";
-import pic9 from "@/assets/past-event-pic-9.jpg";
-import pic10 from "@/assets/past-event-pic-10.jpg";
+import pic1 from "@/assets/past-event-pic-1.webp";
+import pic2 from "@/assets/past-event-pic-2.webp";
+import pic3 from "@/assets/past-event-pic-3.webp";
+import pic4 from "@/assets/past-event-pic-4.webp";
+import pic5 from "@/assets/past-event-pic-5.webp";
+import pic6 from "@/assets/past-event-pic-6.webp";
+import pic7 from "@/assets/past-event-pic-7.webp";
+import pic8 from "@/assets/past-event-pic-8.webp";
+import pic9 from "@/assets/past-event-pic-9.webp";
+import pic10 from "@/assets/past-event-pic-10.webp";
 
 const pastEventPhotos = [pic1, pic2, pic3, pic4, pic5, pic6, pic7, pic8, pic9, pic10];
 

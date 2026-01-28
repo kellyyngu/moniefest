@@ -1,4 +1,4 @@
-import heroBg from "@/assets/banner_bg.jpeg";
+import heroBg from "@/assets/banner_bg.webp";
 import { Link } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import ProgrammePreview from "./ProgrammePreview";

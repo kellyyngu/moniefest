@@ -1,7 +1,7 @@
 
 import Footer from "@/components/Footer";
 import { useEffect, useState } from "react";
-import heroBg from "@/assets/banner_bg.jpeg";
+import heroBg from "@/assets/speakerBanner.webp";
 
 type Speaker = { name: string; title?: string; company?: string };
 
