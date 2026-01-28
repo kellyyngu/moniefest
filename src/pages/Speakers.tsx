@@ -54,7 +54,10 @@ const SpeakersPage = () => {
       
 
       <section className="relative min-h-[44vh] flex items-center justify-center">
-        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${heroBg})` }}>
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${heroBg}${import.meta.env.DEV ? '?t=' + Date.now() : ''})` }}
+        >
           <div className="absolute inset-0 hero-gradient opacity-60" />
         </div>
 
