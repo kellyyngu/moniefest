@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Footer from "@/components/Footer";
 import heroBg from "@/assets/banner_bg.webp";
+import pinnyang from "@/assets/pinnyang.webp";
+import george from "@/assets/george.webp";
 
 type Speaker = {
   name: string;
@@ -25,66 +27,176 @@ type Session = {
 
 const mainStageSchedule: Session[] = [
   { time: "11:00 - 11:15", title: "Opening Speech", description: "", speakers: [{ name: "Guest of Honour", title: "Guest of Honour", company: "" }] },
-  { time: "11:15 - 11:30", title: "Monie Introduction", description: "", speakers: [{ name: "Lim Pinn Yang", title: "Chief Executive Officer", company: "Foodie Media Berhad" }] },
+  { time: "11:15 - 11:30", title: "Monie Introduction", description: "", speakers: [{ name: "Lim Pinn Yang", title: "Chief Executive Officer", company: "Foodie Media Berhad", photo: pinnyang }] },
   { time: "11:30 - 11:45", title: "Opening Ceremony", description: "", speakers: [
     { name: "Guest of Honour", title: "Guest of Honour", company: "" },
-    { name: "Lim Pinn Yang", title: "Chief Executive Officer", company: "Foodie Media Berhad" },
-    { name: "George Poh, CFP®", title: "Chief Executive Officer", company: "Spire Digital Sdn. Bhd." },
+    { name: "Lim Pinn Yang", title: "Chief Executive Officer", company: "Foodie Media Berhad", photo: pinnyang },
+    { name: "George Poh, CFP®", title: "Chief Executive Officer", company: "Spire Digital Sdn. Bhd.", photo: george },
   ] },
   { time: "11:45 - 12:00", title: "Break", description: "" },
   { time: "12:45 - 13:30", isPanel: true, panelNumber: 1, panelTitle: "Malaysia's Economic Growth Outlook for 2H 2026", bullets: [], speakers: [
-      { name: "Bursa CEO / Khazanah", title: "", company: "" },
-      { name: "Exhibitor A", title: "", company: "" },
-      { name: "Brahmal", title: "", company: "" },
-    ], moderator: { name: "George Poh, CFP®", title: "Chief Executive Officer", company: "Spire Digital Sdn. Bhd." },
-    description: "" },
-  { time: "13:30 - 14:15", title: "Investment Talk 1", description: "", speakers: [{ name: "Exhibitor B", title: "", company: "" }] },
+      { name: "Exhibitor A & Panelists", title: "Exhibitor & Panelists", company: "" },
+    ]},
+  { time: "13:30 - 14:15", title: "Investment Talk 1", description: "", speakers: [{ name: "Exhibitor B", title: "Exhibitor & Panelists", company: "" }] },
   { time: "14:15 - 15:00", isPanel: true, panelNumber: 2, panelTitle: "How Government Policies Quietly Shape Your Personal Finances", bullets: [], speakers: [
-      { name: "Dr Ong Kian Ming", title: "", company: "" },
-      { name: "Khairy", title: "", company: "" },
-      { name: "Exhibitor C", title: "", company: "" },
-    ], moderator: { name: "Peter (Host)", title: "Host", company: "" }, description: "" },
-  { time: "15:00 - 15:45", title: "Investment Talk 2", description: "", speakers: [{ name: "Exhibitor D", title: "", company: "" }] },
-  { time: "15:45 - 16:00", title: "Lucky Draw", isSpecial: true, specialImage: "", description: "" },
-  { time: "16:00 - 16:45", title: "Investment Talk 3", description: "", speakers: [{ name: "Exhibitor E", title: "", company: "" }] },
+      { name: "Exhibitor C & Panelists", title: "Exhibitor & Panelists", company: "" },
+    ]},
+  { time: "15:00 - 15:45", title: "Investment Talk 2", description: "", speakers: [{ name: "Exhibitor D", title: "Exhibitor & Panelists", company: "" }] },
+  { time: "15:45 - 16:00", title: "Lucky Draw — Win a Xiaomi 55' TV!", isSpecial: true, specialImage: "https://via.placeholder.com/600x300?text=Xiaomi+55%27+TV", description: "Stand a chance to win a Xiaomi 55' Smart TV — stay till the draw and keep your ticket handy!" },
+  { time: "16:00 - 16:45", title: "Investment Talk 3", description: "", speakers: [{ name: "Exhibitor E", title: "Exhibitor & Panelists", company: "" }] },
   { time: "16:45 - 17:30", isPanel: true, panelNumber: 3, panelTitle: "Can Crypto Coexist With a Boring, Stable Financial Plan?", bullets: [], speakers: [
-      { name: "Coingecko", title: "", company: "" },
-      { name: "Hann (Halogen)", title: "", company: "" },
-      { name: "David (Hata)", title: "", company: "" },
     ], description: "" },
-  { time: "17:30 - 18:15", title: "Investment Talk 4", description: "", speakers: [{ name: "Exhibitor F", title: "", company: "" }] },
+  { time: "17:30 - 18:15", title: "Investment Talk 4", description: "", speakers: [{ name: "Exhibitor F", title: "Exhibitor & Panelists", company: "" }] },
   { time: "18:15 - 19:00", isPanel: true, panelNumber: 4, panelTitle: "When Passion Meets Planning: How to Turn Dreams into Reality", bullets: [], speakers: [
-      { name: "Khairul Aming", title: "", company: "" },
-      { name: "Lim Pinn Yang", title: "Chief Executive Officer", company: "Foodie Media Berhad (host)" },
-      { name: "Siti Nurhaliza", title: "", company: "" },
     ], description: "" },
-  { time: "19:00 - 19:45", title: "Investment Talk 5", description: "", speakers: [{ name: "Exhibitor G", title: "", company: "" }] },
-  { time: "19:45 - 20:00", title: "Lucky Draw", isSpecial: true, specialImage: "", description: "" },
+  { time: "19:00 - 19:45", title: "Investment Talk 5", description: "", speakers: [{ name: "Exhibitor G", title: "Exhibitor & Panelists", company: "" }] },
+  { time: "19:45 - 20:00", title: "Lucky Draw — Win an iPhone 17 Pro!", isSpecial: true, specialImage: "https://via.placeholder.com/600x300?text=iPhone+17+Pro", description: "Final draw of the night — stand a chance to win the brand-new iPhone 17 Pro. Keep your ticket ready and stay until the end!" },
+  { time: "20:00 - 20:10", title: "Day 1 End" },
 ];
 
 const engagementStageSchedule: Session[] = [
-  { time: "9.30am - 10.00am", title: "Workshop: Getting Started (Placeholder)", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-  { time: "10.15am - 10.45am", title: "Session: Tools & Tech (Placeholder)", description: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." },
-  { time: "11.00am - 11.30am", title: "Interactive Q&A (Placeholder)", description: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris." },
-  { time: "2.00pm - 2.30pm", title: "Case Study (Placeholder)", description: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore." },
+  { time: "11:30 - 12:00", title: "Investment Talk 1", description: "", speakers: [{ name: "Exhibitor A", title: "Exhibitor & Panelists", company: "" }] },
+  { time: "12:00 - 12:30", },
+  { time: "12:30 - 13:00", },
+  { time: "13:00 - 13:30", title: "Podcast 1: Passive Income — Reality vs Expectation Across Four Paths", description: "", speakers: [
+    { name: "Exhibitor B & Panelists", title: "Exhibitor & Panelists", company: "" },
+  ] },
+
+  { time: "13:30 - 14:00", title: "Investment Talk 2", description: "", speakers: [{ name: "Exhibitor D", title: "Exhibitor & Panelists", company: "" }] },
+
+  { time: "14:00 - 14:30", },
+
+  { time: "14:30 - 15:00", title: "Podcast 2: When Is It Actually Safe to Upgrade Your Lifestyle?", description: "", speakers: [
+    { name: "Exhibitor E & Panelists", title: "Exhibitor & Panelists", company: "" },
+  ] },
+
+  { time: "15:00 - 15:30", },
+
+  { time: "15:30 - 16:00", title: "Investment Talk 3", description: "", speakers: [{ name: "Exhibitor G", title: "Exhibitor & Panelists", company: "" }] },
+
+  { time: "16:00 - 16:30", title: "Podcast 3: Alternative Investments for Beginners: What You Must Know Before You Enter", description: "", speakers: [
+    { name: "Exhibitor H & Panelists", title: "Exhibitor & Panelists", company: "" },
+  ] },
+
+  { time: "16:30 - 17:00", },
+
+  { time: "17:00 - 18:00", title: "Investment Talk 4", description: "", speakers: [{ name: "Exhibitor J", title: "Exhibitor & Panelists", company: "" }] },
+
+  { time: "18:00 - 18:30", title: "Podcast 4: Planning for the Unexpected — Family Finance Lessons We Learn Too Late", description: "", },
+
+  { time: "18:30 - 19:00", title: "Investment Talk 5", description: "", speakers: [{ name: "Exhibitor K", title: "Exhibitor & Panelists", company: "" }] },
+
+  { time: "19:00 - 19:30", },
+
+  { time: "19:30 - 20:00", },
+  { time: "20:00 - 20:10", title: "Day 1 End" },
 ];
 
-// Day 2 placeholder schedules (different placeholder content)
+// Day 2 Capital Stage schedule (red-cell entries only)
 const mainStageScheduleDay2: Session[] = [
-  { time: "9.00am - 9.30am", title: "Welcome Back & Networking", description: "Day 2 opening and registration. Placeholder copy for Day 2." },
-  { time: "9.30am - 10.15am", title: "Keynote: Market Outlook (Day 2)", description: "Placeholder keynote for Day 2 focusing on market trends." },
-  { time: "10.30am - 11.30am", isPanel: true, panelNumber: 3, panelTitle: "Panel: Investment Opportunities (Day 2)", bullets: ["Placeholder insight A.", "Placeholder insight B."], speakers: [{ name: "TBD Speaker", title: "Panelist", company: "Organization" }], moderator: { name: "TBD Moderator", title: "Moderator", company: "Organization" } },
-  { time: "11.45am - 12.30pm", title: "Case Study: Successful Projects (Day 2)", description: "A placeholder case study session for Day 2." },
-  { time: "12.30pm - 1.30pm", title: "Lunch Break & Networking", description: "Networking time." },
-  { time: "1.30pm - 2.30pm", title: "Afternoon Session: Growth Strategies (Day 2)", description: "Placeholder session for growth strategies." },
-  { time: "2.45pm - 3.30pm", title: "Closing Panel (Day 2)", description: "Wrap up for Day 2." },
+  {
+    time: "10:30 - 11:15",
+    isPanel: true,
+    panelNumber: 1,
+    panelTitle: "Buy, Rent, or Wait: Making Property Decisions Without FOMO",
+    bullets: [],
+    speakers: [
+      { name: "Exhibitor H & Panelists", title: "Exhibitor & Panelists", company: "" },
+    ],
+    description: "",
+  },
+
+  { time: "11:15 - 12:00", title: "Investment Talk 6", description: "", speakers: [{ name: "Exhibitor J", title: "Exhibitor & Panelists", company: "" }] },
+
+  {
+    time: "12:00 - 12:45",
+    isPanel: true,
+    panelNumber: 2,
+    panelTitle: "US Fed Policy & Global Rate Cycles",
+    bullets: [],
+    speakers: [
+      { name: "Exhibitor K & Panelists", title: "Exhibitor & Panelists", company: "" },
+    ],
+    description: "",
+  },
+
+  { time: "12:45 - 13:00", title: "Lucky Draw — Win a Nespresso Coffee Machine!", isSpecial: true, specialImage: "https://via.placeholder.com/600x300?text=Nespresso+Creatista", description: "Stand a chance to win a Nespresso Creatista — stay till the draw and keep your ticket handy!" },
+
+  { time: "13:00 - 13:45", title: "Investment Talk 7", description: "", speakers: [{ name: "Exhibitor M", title: "Exhibitor & Panelists", company: "" }] },
+
+  {
+    time: "13:45 - 14:30",
+    isPanel: true,
+    panelNumber: 3,
+    panelTitle: "Gaji Naik, Kenapa Duit Tetap Tak Cukup?",
+    bullets: [],
+    speakers: [
+      { name: "Exhibitor N & Panelists", title: "Exhibitor & Panelists", company: "" },
+    ],
+    description: "",
+  },
+
+  {
+    time: "14:30 - 15:15",
+    isPanel: true,
+    panelNumber: 4,
+    panelTitle: "Entrepreneurship in Malaysia: What Needs to Change by 2026",
+    bullets: [],
+    speakers: [],
+    description: "",
+  },
+
+  { time: "15:15 - 16:30", title: "Investment Talk 8", description: "", speakers: [{ name: "Exhibitor O", title: "Exhibitor & Panelists", company: "" }] },
+
+  {
+    time: "16:30 - 17:15",
+    isPanel: true,
+    panelNumber: 5,
+    panelTitle: "Why East Malaysia Policy Direction Matters to Long-Term Investors",
+    bullets: [],
+    speakers: [
+      { name: "Exhibitor P & Panelists", title: "Exhibitor & Panelists", company: "" },
+    ],
+    description: "",
+  },
+
+  { time: "17:15 - 18:00", title: "Investment Talk 9", description: "", speakers: [{ name: "Exhibitor R", title: "Exhibitor & Panelists", company: "" }] },
+
+  { time: "18:00 - 18:45", title: "Investment Talk 10", description: "", speakers: [{ name: "Exhibitor S", title: "Exhibitor & Panelists", company: "" }] },
+
+  {
+    time: "18:45 - 19:30",
+    isPanel: true,
+    panelNumber: 6,
+    panelTitle: "What Changes After You Make Your First Million?",
+    bullets: [],
+    speakers: [],
+    description: "",
+  },
+
+  { time: "19:30 - 20:00", title: "Grand Finale Lucky Draw — Win a Dyson Airsonic & Louis Vuitton Handbag!", isSpecial: true, specialImage: "https://via.placeholder.com/600x300?text=Dyson+Airwrap+%26+LV+Handbag", description: "Final draw of the night — stand a chance to win a Dyson Airsonic and a Louis Vuitton handbag. Keep your ticket ready and stay until the end!" },
+  { time: "20:00 - 20:15", title: "Day 2 End" },
 ];
 
 const engagementStageScheduleDay2: Session[] = [
-  { time: "9.30am - 10.15am", title: "Workshop: Creator Tools (Day 2)", description: "Hands-on workshop placeholder for Day 2." },
-  { time: "10.30am - 11.00am", title: "Session: Monetisation (Day 2)", description: "Placeholder content about monetisation for creators." },
-  { time: "11.15am - 11.45am", title: "Interactive: Creator Q&A (Day 2)", description: "Q&A placeholder." },
-  { time: "2.00pm - 2.45pm", title: "Case Study: Creator Growth (Day 2)", description: "Placeholder case study for creators." },
+  { time: "10:30 - 11:00", },
+  { time: "11:00 - 11:30", },
+  { time: "11:30 - 12:00", title: "Podcast 1: Future Skills for Malaysia's Youth: What Employers Really Look For",},
+  { time: "12:00 - 12:30", },
+  { time: "12:30 - 13:00", title: "Investment Talk 6", description: "", speakers: [{ name: "Exhibitor K", title: "Exhibitor & Panelists", company: "" }] },
+  { time: "13:00 - 13:30", title: "Podcast 2: Financial Independence for Women — Planning, Investing & Growing",},
+  { time: "13:30 - 14:00", },
+  { time: "14:00 - 14:30", title: "Investment Talk 7", description: "", speakers: [{ name: "Exhibitor L", title: "Exhibitor & Panelists", company: "" }] },
+  { time: "14:30 - 15:00", title: "Podcast 3: From Scam to Justice — What Happens After You Report?", description: "", },
+  { time: "15:00 - 15:30", },
+  { time: "15:30 - 16:00", title: "Investment Talk 8", description: "", speakers: [{ name: "Exhibitor M", title: "Exhibitor & Panelists", company: "" }] },
+  { time: "16:00 - 16:30", },
+  { time: "16:30 - 17:00", },
+  { time: "17:00 - 17:30", title: "Investment Talk 9", description: "", speakers: [{ name: "Exhibitor N", title: "Exhibitor & Panelists", company: "" }] },
+  { time: "17:30 - 18:00", },
+  { time: "18:00 - 18:30", },
+  { time: "18:30 - 19:00", title: "Wrap: Sunset Wrap & Networking — Share, Connect, Celebrate", description: "Join for a relaxed wrap: share takeaways, meet speakers, and explore follow-up opportunities. Light refreshments served." },
+  { time: "19:00 - 19:10", title: "Day 2 End" },
 ];
 
 const SpeakerCard = ({ speaker }: { speaker: Speaker }) => {
@@ -107,15 +219,18 @@ const SpeakerCard = ({ speaker }: { speaker: Speaker }) => {
     </div>
   );
 };
-const SessionRow = ({ session, onOpen }: { session: Session; onOpen: (s: Session) => void }) => (
-  <div
-    className="border-b border-border last:border-b-0 py-4 cursor-pointer"
-    role="button"
-    tabIndex={0}
-    onClick={() => onOpen(session)}
-    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onOpen(session); }}
-  >
-    <div className="flex gap-6 items-start">
+const SessionRow = ({ session, onOpen }: { session: Session; onOpen: (s: Session) => void }) => {
+  const isDayEnd = !!(session.title && /Day\s*\d+\s*End/i.test(session.title));
+  const isInvestmentTalk = !!(session.title && session.title.startsWith('Investment Talk'));
+  return (
+    <div
+      className="border-b border-border last:border-b-0 py-4 cursor-pointer"
+      role="button"
+      tabIndex={0}
+      onClick={() => onOpen(session)}
+      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onOpen(session); }}
+    >
+      <div className={`flex gap-6 ${isDayEnd ? 'items-center' : 'items-start'}`}>
       <div className="w-28 flex-shrink-0">
         <div className="bg-primary/10 text-primary px-3 py-2 rounded-md text-sm font-medium text-center">
           {session.time}
@@ -126,10 +241,10 @@ const SessionRow = ({ session, onOpen }: { session: Session; onOpen: (s: Session
         {session.isPanel ? (
           <>
             <p className="text-muted-foreground font-medium mb-1 text-center">Panel Discussion #{session.panelNumber}</p>
-            <h3 className="font-bold text-navy-deep mb-2 text-center text-lg md:text-xl">{session.panelTitle}</h3>
+            <h3 className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-emerald-500 mb-2 text-center text-lg md:text-xl">{session.panelTitle}</h3>
           </>
         ) : session.title && (
-          <h3 className={`font-bold ${session.isSpecial ? 'text-2xl text-primary text-center' : 'text-navy-deep text-center text-lg md:text-xl'}`}>
+          <h3 className={`font-bold ${session.isSpecial ? 'text-2xl bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-yellow-400 text-center' : isInvestmentTalk ? 'bg-clip-text text-transparent bg-gradient-to-r from-teal-400 via-cyan-500 to-sky-600 text-center text-lg md:text-xl' : 'bg-clip-text text-transparent bg-gradient-to-r from-primary to-emerald-500 text-center text-lg md:text-xl'}`}>
             {session.title}
           </h3>
         )}
@@ -164,8 +279,9 @@ const SessionRow = ({ session, onOpen }: { session: Session; onOpen: (s: Session
         )}
       </div>
     </div>
-  </div>
-);
+    </div>
+  );
+};
 
 const Programme = () => {
   const [activeTab, setActiveTab] = useState<"main" | "engagement">("main");
